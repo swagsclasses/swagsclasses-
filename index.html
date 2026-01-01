@@ -1,130 +1,132 @@
-<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<title>SWAGS CLASSES | Maths & Science Coaching</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SWAGS CLASSES</title>
 
 <style>
-/* ===== RESET & BASIC ===== */
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f6f8;
-  color:#333;
-  line-height:1.6;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+body{background:#f4f6f8;color:#333;}
 
-/* ===== HEADER ===== */
+/* HEADER */
 header{
-  background:#0b3c5d;
-  color:#fff;
-  text-align:center;
-  padding:35px 15px;
+background:#0b3c5d;
+color:#fff;
+text-align:center;
+padding:25px;
 }
-header h1{font-size:32px}
-header p{margin-top:8px}
+header img{
+width:90px;
+margin-bottom:10px;
+}
+header h1{font-size:32px;}
+header p{margin-top:5px;font-size:16px;}
+.btn{
+display:inline-block;
+margin-top:15px;
+padding:10px 22px;
+background:#ffcc00;
+color:#000;
+text-decoration:none;
+border-radius:25px;
+font-weight:bold;
+}
 
-/* ===== NAV ===== */
-nav{
-  margin-top:10px;
-}
-nav a{
-  color:#ffcc00;
-  margin:0 8px;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-/* ===== SECTION ===== */
+/* SECTION */
 section{
-  max-width:1100px;
-  margin:auto;
-  padding:40px 20px;
+padding:35px 20px;
+max-width:1100px;
+margin:auto;
 }
-section h2{
-  text-align:center;
-  color:#0b3c5d;
-  margin-bottom:25px;
-}
+h2{text-align:center;margin-bottom:25px;color:#0b3c5d;}
 
-/* ===== GRID / CARDS ===== */
+/* CARDS */
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
 .card{
-  background:#fff;
-  padding:20px;
-  border-radius:10px;
-  box-shadow:0 4px 10px rgba(0,0,0,.1);
-  text-align:center;
-}
-.price{
-  font-size:20px;
-  font-weight:bold;
-  margin-top:10px;
+background:#fff;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+text-align:center;
 }
 
-/* ===== FEATURES ===== */
-.features ul{
-  max-width:600px;
-  margin:auto;
+/* TABLE */
+table{
+width:100%;
+border-collapse:collapse;
+background:#fff;
 }
-.features li{
-  margin:8px 0;
+th,td{
+border:1px solid #ddd;
+padding:10px;
+text-align:center;
 }
+th{background:#0b3c5d;color:#fff;}
 
-/* ===== FORM ===== */
+/* FORM */
 form{
-  max-width:400px;
-  margin:auto;
+background:#fff;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
 input,select,button{
-  width:100%;
-  padding:10px;
-  margin:10px 0;
+width:100%;
+padding:10px;
+margin-top:10px;
 }
 button{
-  background:#0b3c5d;
-  color:#fff;
-  border:none;
-  font-weight:bold;
+background:#0b3c5d;
+color:#fff;
+border:none;
+font-size:16px;
 }
 
-/* ===== CONTACT ===== */
+/* CONTACT */
 .contact{
-  background:#0b3c5d;
-  color:#fff;
-  text-align:center;
-  padding:40px 20px;
+background:#0b3c5d;
+color:#fff;
+text-align:center;
+padding:30px;
 }
+.contact a{color:#ffcc00;text-decoration:none;}
+
+/* SOCIAL */
 .social a{
-  display:inline-block;
-  margin:6px;
-  padding:8px 14px;
-  background:#fff;
-  color:#0b3c5d;
-  border-radius:20px;
-  text-decoration:none;
-  font-size:14px;
+display:inline-block;
+margin:5px;
+padding:8px 14px;
+background:#fff;
+color:#0b3c5d;
+border-radius:20px;
+text-decoration:none;
+font-size:14px;
 }
 
-/* ===== MAP ===== */
-iframe{
-  width:100%;
-  height:300px;
-  border:0;
-  border-radius:10px;
+/* WHATSAPP */
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:#fff;
+font-size:28px;
+padding:14px;
+border-radius:50%;
+text-decoration:none;
 }
 
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{
-  background:#111;
-  color:#ccc;
-  text-align:center;
-  padding:15px;
+background:#111;
+color:#ccc;
+text-align:center;
+padding:12px;
 }
 </style>
 </head>
@@ -132,94 +134,79 @@ footer{
 <body>
 
 <header>
-  <h1>SWAGS CLASSES</h1>
-  <p>Maths & Science Coaching (Classes 1–12)</p>
-  <p><strong>By Ajay Gope Sir</strong></p>
-  <nav>
-    <a href="#courses">Courses</a>
-    <a href="#fees">Fees</a>
-    <a href="#register">Register</a>
-    <a href="#location">Location</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<!-- LOGO PLACE -->
+<img src="logo.png" alt="SWAGS CLASSES LOGO">
+<h1>SWAGS CLASSES</h1>
+<p>Maths & Science Coaching (Class 1–12)</p>
+<p><strong>By Ajay Gope Sir</strong></p>
+<a class="btn" href="https://t.me/swagsclasses">Join Telegram</a>
 </header>
 
-<section id="courses">
-  <h2>Our Courses</h2>
-  <div class="grid">
-    <div class="card">Class 1–5<br>All Subjects</div>
-    <div class="card">Class 6–8<br>Math | Science | English | SST</div>
-    <div class="card">Class 9–10<br>Math | Science</div>
-    <div class="card">Class 11–12<br>Physics | Chemistry | Maths</div>
-  </div>
+<section>
+<h2>Courses Offered</h2>
+<div class="grid">
+<div class="card">Class 1–5<br>All Subjects</div>
+<div class="card">Class 6–8<br>Maths | Science | English</div>
+<div class="card">Class 9–10<br>Maths | Science</div>
+<div class="card">Class 11–12<br>Maths | Physics | Chemistry</div>
+</div>
 </section>
 
-<section id="fees">
-  <h2>Fee Structure</h2>
-  <div class="grid">
-    <div class="card">Admission Fee<div class="price">₹100 (One Time)</div></div>
-    <div class="card">Class 1–5<div class="price">₹500 / Month</div></div>
-    <div class="card">Class 6–8<div class="price">₹600 / Month</div></div>
-    <div class="card">Class 9–10<div class="price">₹800 / Month</div></div>
-    <div class="card">Class 11–12<div class="price">₹1000 / Month</div></div>
-  </div>
+<section>
+<h2>Fee Structure</h2>
+<table>
+<tr><th>Class</th><th>Monthly Fee</th></tr>
+<tr><td>1–5</td><td>₹500</td></tr>
+<tr><td>6–8</td><td>₹600</td></tr>
+<tr><td>9–10</td><td>₹800</td></tr>
+<tr><td>11–12</td><td>₹1000</td></tr>
+</table>
+<p style="margin-top:10px;text-align:center;"><b>Admission Fee (One Time): ₹100</b></p>
 </section>
 
-<section class="features">
-  <h2>Additional Features</h2>
-  <ul>
-    <li>✔ Chapter-wise Test</li>
-    <li>✔ Subject-wise Schedule</li>
-    <li>✔ Target-based Classes</li>
-    <li>✔ Daily Attendance Record</li>
-    <li>✔ Dedicated Time for Each Subject</li>
-  </ul>
+<section>
+<h2>Online Registration</h2>
+<form onsubmit="submitForm(event)">
+<input type="text" placeholder="Student Name" required>
+<input type="tel" placeholder="Mobile Number" required>
+<select required>
+<option value="">Select Class</option>
+<option>Class 1–5</option>
+<option>Class 6–8</option>
+<option>Class 9–10</option>
+<option>Class 11–12</option>
+</select>
+<button type="submit">Submit</button>
+</form>
 </section>
 
-<section id="register">
-  <h2>Online Registration</h2>
-  <form onsubmit="sendWhatsApp(event)">
-    <input type="text" id="name" placeholder="Student Name" required>
-    <input type="number" id="class" placeholder="Class" required>
-    <input type="tel" id="phone" placeholder="Mobile Number" required>
-    <button type="submit">Register via WhatsApp</button>
-  </form>
+<section>
+<h2>Our Location</h2>
+<iframe src="https://maps.google.com/maps?q=Lowadih%20Rd,%20Ranchi&t=&z=15&ie=UTF8&iwloc=&output=embed"
+width="100%" height="300" style="border-radius:10px;"></iframe>
 </section>
 
-<section id="location">
-  <h2>Our Location</h2>
-  <p style="text-align:center;">
-    Lowadih Rd, near St. Frances & Assisi High School,<br>
-    Samlong, Ranchi, Jharkhand – 834010
-  </p>
-  <iframe src="https://www.google.com/maps?q=Lowadih%20Rd%20near%20St.%20Frances%20and%20Assisi%20High%20School%20Samlong%20Ranchi&output=embed"></iframe>
-</section>
-
-<div class="contact" id="contact">
-  <h2>Contact & Social Media</h2>
-  <div class="social">
-    <a href="https://whatsapp.com/channel/0029VbBniSWF1YIWRXPA9W2X">WhatsApp</a>
-    <a href="https://t.me/swagsclasses">Telegram</a>
-    <a href="https://aratt.ai/@swags">Aratt</a>
-    <a href="https://www.facebook.com/share/1BvXXcGB9t/">Facebook</a>
-    <a href="https://www.instagram.com/swagsclasses">Instagram</a>
-    <a href="https://www.youtube.com/@SWAGSCLASSES">YouTube</a>
-    <a href="https://www.threads.com/@swagsclasses">Threads</a>
-  </div>
+<div class="contact">
+<h2>Contact Us</h2>
+<p>📍 Ranchi, Jharkhand</p>
+<div class="social">
+<a href="https://www.youtube.com/@SWAGSCLASSES">YouTube</a>
+<a href="https://www.instagram.com/swagsclasses">Instagram</a>
+<a href="https://t.me/swagsclasses">Telegram</a>
+<a href="https://whatsapp.com/channel/0029VbBniSWF1YlWRXPA9W2X">WhatsApp</a>
+</div>
 </div>
 
 <footer>
-  © 2026 SWAGS CLASSES | All Rights Reserved
+© 2026 SWAGS CLASSES | All Rights Reserved
 </footer>
 
+<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">💬</a>
+
 <script>
-function sendWhatsApp(e){
-  e.preventDefault();
-  let n=document.getElementById("name").value;
-  let c=document.getElementById("class").value;
-  let p=document.getElementById("phone").value;
-  let msg="New Admission Enquiry%0AName: "+n+"%0AClass: "+c+"%0AMobile: "+p;
-  window.open("https://wa.me/919XXXXXXXXX?text="+msg,"_blank");
+function submitForm(e){
+e.preventDefault();
+alert("Registration Submitted Successfully!");
 }
 </script>
 
