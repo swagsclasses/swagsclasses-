@@ -1,0 +1,165 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWAGS CLASSES</title>
+
+<style>
+/* ===== RESET & BASIC ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f6f8;
+  color:#333;
+}
+
+/* ===== HEADER ===== */
+header{
+  background:#0b3c5d;
+  color:#fff;
+  text-align:center;
+  padding:30px 15px;
+}
+header h1{font-size:32px}
+header p{margin-top:8px}
+
+/* ===== NAV ===== */
+nav a{
+  color:#fff;
+  margin:0 10px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+/* ===== SECTION ===== */
+section{
+  max-width:1100px;
+  margin:auto;
+  padding:40px 20px;
+}
+
+/* ===== CARDS ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+.card{
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,.1);
+  text-align:center;
+}
+
+/* ===== FEES ===== */
+.price{
+  font-size:20px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+/* ===== FORM ===== */
+form{
+  max-width:400px;
+  margin:auto;
+}
+input,select,button{
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+}
+button{
+  background:#0b3c5d;
+  color:#fff;
+  border:none;
+  font-weight:bold;
+}
+
+/* ===== CONTACT ===== */
+.contact{
+  background:#0b3c5d;
+  color:#fff;
+  text-align:center;
+  padding:40px 20px;
+}
+.contact a{
+  color:#ffcc00;
+  margin:5px;
+  display:inline-block;
+  text-decoration:none;
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:#111;
+  color:#ccc;
+  text-align:center;
+  padding:15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>SWAGS CLASSES</h1>
+  <p>Maths & Science Coaching (Classes 1–12)</p>
+  <p><strong>By Ajay Gope Sir</strong></p>
+</header>
+
+<section>
+  <h2>Our Courses</h2>
+  <div class="grid">
+    <div class="card">Class 1–5</div>
+    <div class="card">Class 6–8</div>
+    <div class="card">Class 9–10</div>
+    <div class="card">Class 11–12 (PCM)</div>
+  </div>
+</section>
+
+<section>
+  <h2>Fee Structure</h2>
+  <div class="grid">
+    <div class="card">Class 1–5<div class="price">₹500</div></div>
+    <div class="card">Class 6–8<div class="price">₹600</div></div>
+    <div class="card">Class 9–10<div class="price">₹800</div></div>
+    <div class="card">Class 11–12<div class="price">₹1000</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Online Registration</h2>
+  <form onsubmit="sendWhatsApp(event)">
+    <input type="text" id="name" placeholder="Student Name" required>
+    <input type="number" id="class" placeholder="Class" required>
+    <input type="tel" id="phone" placeholder="Mobile Number" required>
+    <button type="submit">Register via WhatsApp</button>
+  </form>
+</section>
+
+<div class="contact">
+  <h2>Contact</h2>
+  <a href="https://t.me/swagsclasses">Telegram</a>
+  <a href="https://www.youtube.com/@SWAGSCLASSES">YouTube</a>
+  <a href="https://www.instagram.com/swagsclasses">Instagram</a>
+</div>
+
+<footer>
+  © 2026 SWAGS CLASSES
+</footer>
+
+<script>
+function sendWhatsApp(e){
+  e.preventDefault();
+  let n=document.getElementById("name").value;
+  let c=document.getElementById("class").value;
+  let p=document.getElementById("phone").value;
+  let msg="New Admission%0AName:"+n+"%0AClass:"+c+"%0AMobile:"+p;
+  window.open("https://wa.me/919XXXXXXXXX?text="+msg,"_blank");
+}
+</script>
+
+</body>
+</html>
