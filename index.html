@@ -7,6 +7,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+html{scroll-behavior:smooth;}
 body{background:#f4f6f8;color:#333;}
 
 /* HEADER */
@@ -15,6 +16,7 @@ background:#0b3c5d;
 color:#fff;
 text-align:center;
 padding:25px;
+position:relative;
 }
 header img{
 width:90px;
@@ -33,6 +35,35 @@ border-radius:25px;
 font-weight:bold;
 }
 
+/* 3 DOT MENU */
+.menu{
+position:absolute;
+top:15px;
+right:15px;
+cursor:pointer;
+font-size:26px;
+}
+.dropdown{
+display:none;
+position:absolute;
+top:45px;
+right:15px;
+background:#fff;
+color:#000;
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+overflow:hidden;
+z-index:1000;
+}
+.dropdown a{
+display:block;
+padding:10px 15px;
+text-decoration:none;
+color:#000;
+border-bottom:1px solid #eee;
+}
+.dropdown a:hover{background:#f4f6f8;}
+
 /* SECTION */
 section{
 padding:35px 20px;
@@ -41,7 +72,7 @@ margin:auto;
 }
 h2{text-align:center;margin-bottom:25px;color:#0b3c5d;}
 
-/* CARDS */
+/* GRID / CARDS */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -74,6 +105,8 @@ background:#fff;
 padding:25px;
 border-radius:10px;
 box-shadow:0 4px 10px rgba(0,0,0,0.1);
+max-width:400px;
+margin:auto;
 }
 input,select,button{
 width:100%;
@@ -94,9 +127,6 @@ color:#fff;
 text-align:center;
 padding:30px;
 }
-.contact a{color:#ffcc00;text-decoration:none;}
-
-/* SOCIAL */
 .social a{
 display:inline-block;
 margin:5px;
@@ -106,6 +136,12 @@ color:#0b3c5d;
 border-radius:20px;
 text-decoration:none;
 font-size:14px;
+}
+
+/* GALLERY */
+.gallery img{
+width:100%;
+border-radius:10px;
 }
 
 /* WHATSAPP */
@@ -134,7 +170,15 @@ padding:12px;
 <body>
 
 <header>
-<!-- LOGO PLACE -->
+<div class="menu" onclick="toggleMenu()">⋮</div>
+<div class="dropdown" id="menuBox">
+<a href="#gallery">📸 Photo Gallery</a>
+<a href="#events">🎉 Special Events</a>
+<a href="#holidays">📅 Holidays</a>
+<a href="#notices">📢 Notices</a>
+<a href="#achievements">🏆 Achievements</a>
+</div>
+
 <img src="logo.png" alt="SWAGS CLASSES LOGO">
 <h1>SWAGS CLASSES</h1>
 <p>Maths & Science Coaching (Class 1–12)</p>
@@ -166,7 +210,7 @@ padding:12px;
 
 <section>
 <h2>Online Registration</h2>
-<form onsubmit="submitForm(event)">
+<form action="https://forms.gle/PASTE-YOUR-GOOGLE-FORM-LINK" target="_blank">
 <input type="text" placeholder="Student Name" required>
 <input type="tel" placeholder="Mobile Number" required>
 <select required>
@@ -176,8 +220,44 @@ padding:12px;
 <option>Class 9–10</option>
 <option>Class 11–12</option>
 </select>
-<button type="submit">Submit</button>
+<button type="submit">Register Now</button>
 </form>
+</section>
+
+<section id="gallery" class="gallery">
+<h2>📸 Photo Gallery</h2>
+<div class="grid">
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+</div>
+</section>
+
+<section id="events">
+<h2>🎉 Special Events</h2>
+<div class="card">Olympiad Preparation Program</div>
+<div class="card">Monthly Test & Prize Distribution</div>
+<div class="card">Career Guidance Seminar</div>
+</section>
+
+<section id="holidays">
+<h2>📅 Holidays</h2>
+<div class="card">26 January – Republic Day</div>
+<div class="card">15 August – Independence Day</div>
+<div class="card">Diwali – Festival Holiday</div>
+<div class="card">Holi – Festival Holiday</div>
+</section>
+
+<section id="notices">
+<h2>📢 Notices</h2>
+<div class="card">New batch starting soon</div>
+<div class="card">Parents meeting on Friday</div>
+</section>
+
+<section id="achievements">
+<h2>🏆 Achievements</h2>
+<div class="card">95% Result in Class 10</div>
+<div class="card">State Level Olympiad Ranks</div>
 </section>
 
 <section>
@@ -187,8 +267,7 @@ width="100%" height="300" style="border-radius:10px;"></iframe>
 </section>
 
 <div class="contact">
-<h2>Contact Us</h2>
-<p>📍 Ranchi, Jharkhand</p>
+<h2>Contact & Social</h2>
 <div class="social">
 <a href="https://www.youtube.com/@SWAGSCLASSES">YouTube</a>
 <a href="https://www.instagram.com/swagsclasses">Instagram</a>
@@ -204,9 +283,9 @@ width="100%" height="300" style="border-radius:10px;"></iframe>
 <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">💬</a>
 
 <script>
-function submitForm(e){
-e.preventDefault();
-alert("Registration Submitted Successfully!");
+function toggleMenu(){
+let menu=document.getElementById("menuBox");
+menu.style.display = (menu.style.display==="block") ? "none" : "block";
 }
 </script>
 
