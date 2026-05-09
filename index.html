@@ -1276,35 +1276,40 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(135deg, #7c3aed, #a855f7, #7c3aed);
-  background-size: 200% 200%;
-  animation: gradShift 3s ease infinite;
-  color: #fff;
-  font-weight: 800;
+  background: linear-gradient(135deg, var(--navy-mid), var(--navy-light));
+  border: 2px solid var(--gold);
+  color: var(--gold-light);
+  font-weight: 700;
   font-size: 15px;
-  padding: 14px 32px;
+  padding: 13px 32px;
   border-radius: 50px;
   text-decoration: none;
-  box-shadow: 0 8px 28px rgba(124,58,237,0.45);
+  box-shadow: 0 6px 24px rgba(212,160,23,0.25);
   transition: all 0.3s;
-  position: relative;
   letter-spacing: 0.3px;
 }
-.btn-olympiad-hero:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(124,58,237,0.6); }
+.btn-olympiad-hero:hover {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--navy);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(212,160,23,0.45);
+}
 .olym-badge-hero {
   background: var(--gold);
   color: var(--navy);
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 900;
   padding: 2px 8px;
   border-radius: 20px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
 }
-@keyframes gradShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
 
 /* ─── OLYMPIAD SECTION ─── */
 #olympiad {
-  background: linear-gradient(160deg, #0f0526 0%, #1a0845 40%, #2d1060 70%, #1a0845 100%);
+  background:
+    radial-gradient(ellipse at 10% 60%, rgba(212,160,23,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at 90% 20%, rgba(26,64,128,0.5) 0%, transparent 55%),
+    linear-gradient(160deg, #04111f 0%, var(--navy) 45%, var(--navy-mid) 75%, var(--navy) 100%);
   padding: 90px 0;
   position: relative;
   overflow: hidden;
@@ -1314,17 +1319,8 @@ footer {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 15% 50%, rgba(168,85,247,0.12) 0%, transparent 50%),
-    radial-gradient(circle at 85% 30%, rgba(212,160,23,0.08) 0%, transparent 50%);
-  pointer-events: none;
-}
-#olympiad::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    repeating-linear-gradient(0deg, rgba(168,85,247,0.03) 0px, transparent 1px, transparent 50px, rgba(168,85,247,0.03) 51px),
-    repeating-linear-gradient(90deg, rgba(168,85,247,0.03) 0px, transparent 1px, transparent 50px, rgba(168,85,247,0.03) 51px);
+    repeating-linear-gradient(0deg, rgba(212,160,23,0.025) 0px, transparent 1px, transparent 70px, rgba(212,160,23,0.025) 71px),
+    repeating-linear-gradient(90deg, rgba(212,160,23,0.025) 0px, transparent 1px, transparent 70px, rgba(212,160,23,0.025) 71px);
   pointer-events: none;
 }
 .olym-inner {
@@ -1332,25 +1328,24 @@ footer {
   margin: 0 auto;
   padding: 0 24px;
   display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 60px;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 64px;
   align-items: start;
   position: relative;
   z-index: 2;
 }
-.olym-left {}
 .olym-trophy {
-  font-size: 70px;
+  font-size: 64px;
   margin-bottom: 16px;
   display: block;
-  filter: drop-shadow(0 0 20px rgba(168,85,247,0.5));
+  filter: drop-shadow(0 4px 16px rgba(212,160,23,0.4));
 }
 .olym-eyebrow {
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #a855f7;
+  color: var(--gold);
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -1360,8 +1355,8 @@ footer {
   content: '';
   display: block;
   height: 1px;
-  width: 24px;
-  background: #a855f7;
+  width: 28px;
+  background: var(--gold);
 }
 .olym-title {
   font-family: 'Playfair Display', serif;
@@ -1379,49 +1374,49 @@ footer {
 }
 .olym-desc {
   font-size: 15px;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.8;
-  margin-bottom: 28px;
+  color: rgba(255,255,255,0.58);
+  line-height: 1.85;
+  margin-bottom: 30px;
 }
-.olym-perks {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
+.olym-perks { display: flex; flex-direction: column; gap: 10px; }
 .olym-perk {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   padding: 12px 16px;
-  background: rgba(168,85,247,0.1);
-  border: 1px solid rgba(168,85,247,0.2);
-  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(212,160,23,0.18);
+  border-left: 3px solid var(--gold);
+  border-radius: 10px;
   font-size: 14px;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255,255,255,0.82);
   font-weight: 500;
+  transition: background 0.2s;
 }
-.olym-perk-icon { font-size: 20px; flex-shrink: 0; }
+.olym-perk:hover { background: rgba(212,160,23,0.07); }
+.olym-perk-icon { font-size: 18px; flex-shrink: 0; }
 
-/* ─── OLYMPIAD FORM ─── */
+/* ─── OLYMPIAD FORM CARD ─── */
 .olym-form-wrap {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(168,85,247,0.25);
-  border-radius: 24px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(212,160,23,0.2);
+  border-radius: 20px;
   padding: 36px 32px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
   position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
 }
 .olym-form-wrap::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #7c3aed, #a855f7, var(--gold), #a855f7, #7c3aed);
-  border-radius: 24px 24px 0 0;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+  border-radius: 20px 20px 0 0;
 }
 .olym-form-title {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 700;
   color: var(--gold-light);
   margin-bottom: 24px;
@@ -1433,26 +1428,22 @@ footer {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
-.olym-fg {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+.olym-fg { display: flex; flex-direction: column; gap: 5px; }
 .olym-fg.full { grid-column: 1 / -1; }
-.olym-fg label {
-  font-size: 11px;
+.olym-fg > label {
+  font-size: 10.5px;
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
+  color: rgba(255,255,255,0.45);
 }
 .olym-fg input,
 .olym-fg select {
   width: 100%;
   padding: 11px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(168,85,247,0.25);
-  background: rgba(255,255,255,0.07);
+  border-radius: 9px;
+  border: 1px solid rgba(212,160,23,0.2);
+  background: rgba(255,255,255,0.06);
   color: #fff;
   font-size: 14px;
   font-family: 'DM Sans', sans-serif;
@@ -1461,73 +1452,17 @@ footer {
   appearance: none;
   -webkit-appearance: none;
 }
-.olym-fg input::placeholder { color: rgba(255,255,255,0.3); }
+.olym-fg input::placeholder { color: rgba(255,255,255,0.25); }
 .olym-fg input:focus,
 .olym-fg select:focus {
-  border-color: #a855f7;
-  background: rgba(168,85,247,0.12);
-  box-shadow: 0 0 0 3px rgba(168,85,247,0.15);
+  border-color: var(--gold);
+  background: rgba(212,160,23,0.08);
+  box-shadow: 0 0 0 3px rgba(212,160,23,0.12);
 }
-.olym-fg select option { background: #1a0845; color: #fff; }
-.olym-submit {
-  width: 100%;
-  margin-top: 20px;
-  padding: 15px;
-  border: none;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
-  color: #fff;
-  font-size: 15px;
-  font-weight: 800;
-  font-family: 'DM Sans', sans-serif;
-  cursor: pointer;
-  letter-spacing: 0.5px;
-  box-shadow: 0 8px 24px rgba(124,58,237,0.4);
-  transition: all 0.3s;
-}
-.olym-submit:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(124,58,237,0.55); background: linear-gradient(135deg,#6d28d9,#9333ea); }
-.olym-submit:active { transform: translateY(0); }
+.olym-fg select option { background: #0a2342; color: #fff; }
 
-/* ─── OLYMPIAD THANK YOU ─── */
-.olym-thankyou {
-  display: none;
-  text-align: center;
-  padding: 30px 20px;
-}
-.olym-ty-icon { font-size: 64px; margin-bottom: 16px; display: block; animation: bounceIn 0.6s ease; }
-.olym-ty-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--gold-light);
-  margin-bottom: 10px;
-}
-.olym-ty-text { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.7; }
-.olym-ty-wa {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 20px;
-  padding: 13px 28px;
-  border-radius: 50px;
-  background: #25d366;
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-  font-size: 14px;
-  box-shadow: 0 6px 20px rgba(37,211,102,0.4);
-  transition: all 0.3s;
-}
-.olym-ty-wa:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,0.55); }
-@keyframes bounceIn {
-  0% { transform: scale(0.3); opacity: 0; }
-  60% { transform: scale(1.1); opacity: 1; }
-  80% { transform: scale(0.95); }
-  100% { transform: scale(1); }
-}
-
-/* ─── CHECKBOX GROUP ─── */
-.olym-checkbox-group {
+/* ─── RADIO / CHIP SELECTORS ─── */
+.olym-chip-group {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -1536,38 +1471,159 @@ footer {
 .olym-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 7px 13px;
-  border-radius: 30px;
-  border: 1px solid rgba(168,85,247,0.3);
-  background: rgba(168,85,247,0.08);
-  color: rgba(255,255,255,0.75);
+  gap: 7px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(212,160,23,0.22);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.7);
   font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
   cursor: pointer;
   transition: all 0.2s;
   user-select: none;
+  font-weight: 500;
 }
-.olym-chip input[type="checkbox"],
 .olym-chip input[type="radio"] {
   width: 14px; height: 14px;
-  accent-color: #a855f7;
+  accent-color: var(--gold);
   margin: 0; padding: 0;
   flex-shrink: 0;
   cursor: pointer;
 }
 .olym-chip:has(input:checked) {
-  background: rgba(168,85,247,0.25);
-  border-color: #a855f7;
+  background: rgba(212,160,23,0.15);
+  border-color: var(--gold);
+  color: var(--gold-light);
+  font-weight: 600;
+  box-shadow: 0 0 0 2px rgba(212,160,23,0.12);
+}
+.olym-chip:hover:not(:has(input:checked)) {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(212,160,23,0.4);
   color: #fff;
 }
 
+/* ─── SUBMIT BUTTON ─── */
+.olym-submit {
+  width: 100%;
+  margin-top: 22px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 800;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  box-shadow: 0 8px 24px rgba(212,160,23,0.35);
+  transition: all 0.3s;
+}
+.olym-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(212,160,23,0.5);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+}
+.olym-submit:active { transform: translateY(0); }
+
+/* ─── THANK YOU SCREEN ─── */
+.olym-thankyou {
+  display: none;
+  text-align: center;
+  padding: 40px 20px;
+}
+.olym-ty-icon {
+  font-size: 72px;
+  margin-bottom: 18px;
+  display: block;
+  animation: bounceIn 0.65s cubic-bezier(0.36,0.07,0.19,0.97) both;
+}
+.olym-ty-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--gold-light);
+  margin-bottom: 12px;
+}
+.olym-ty-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 8px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.olym-ty-text {
+  font-size: 15px;
+  color: rgba(255,255,255,0.68);
+  line-height: 1.75;
+  max-width: 360px;
+  margin: 0 auto 24px;
+}
+.olym-ty-divider {
+  width: 60px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 18px auto;
+}
+.olym-ty-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 30px;
+  border-radius: 50px;
+  background: #25d366;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 14px;
+  box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+  transition: all 0.3s;
+}
+.olym-ty-wa:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(37,211,102,0.5); }
+@keyframes bounceIn {
+  0%   { transform: scale(0.2) rotate(-10deg); opacity: 0; }
+  60%  { transform: scale(1.12) rotate(3deg); opacity: 1; }
+  80%  { transform: scale(0.96); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+/* ─── SECTION DIVIDER ─── */
+.olym-field-divider {
+  grid-column: 1 / -1;
+  height: 1px;
+  background: rgba(212,160,23,0.12);
+  margin: 4px 0;
+}
+.olym-section-label {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.olym-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(212,160,23,0.2);
+}
+
 @media(max-width:900px) {
-  .olym-inner { grid-template-columns: 1fr; gap: 40px; }
+  .olym-inner { grid-template-columns: 1fr; gap: 44px; }
   .olym-form-grid { grid-template-columns: 1fr; }
   .olym-fg.full { grid-column: auto; }
+  .olym-section-label { grid-column: auto; }
+  .olym-field-divider { grid-column: auto; }
 }
 @media(max-width:480px) {
-  .olym-form-wrap { padding: 24px 18px; }
+  .olym-form-wrap { padding: 24px 16px; }
+  .olym-form-title { font-size: 18px; }
 }
 </style>
 </head>
@@ -2182,27 +2238,32 @@ footer {
 <!-- ─── SWAGS OLYMPIAD ─── -->
 <section id="olympiad">
   <div class="olym-inner">
+
     <!-- LEFT INFO PANEL -->
     <div class="olym-left reveal">
       <span class="olym-trophy">🏅</span>
       <div class="olym-eyebrow">SWAGS OLYMPIAD 2026</div>
       <h2 class="olym-title">Register for<br><span>SWAGS OLYMPIAD</span></h2>
-      <p class="olym-desc">Jharkhand ke sabse exciting Olympiad mein apna naam darj karein! Reasoning, Science, Math, Writing Skills aur Fun Puzzles ke saath apni pratibha dikhao aur bade prizes jeeto.</p>
+      <p class="olym-desc">Jharkhand ke sabse exciting Olympiad mein apna naam darj karein! Science, Math, Reasoning, Puzzles aur Writing Skills ke through apni pratibha dikhao aur bade prizes jeeto.</p>
       <div class="olym-perks">
-        <div class="olym-perk"><span class="olym-perk-icon">🥇</span>District & State Level Ranking — Apni position janein!</div>
-        <div class="olym-perk"><span class="olym-perk-icon">🎖️</span>Medals, Certificates & Special Prizes</div>
-        <div class="olym-perk"><span class="olym-perk-icon">🧠</span>Reasoning, Science, Math, Puzzle Challenges</div>
-        <div class="olym-perk"><span class="olym-perk-icon">✍️</span>Cursive Writing Skills — Special Recognition</div>
-        <div class="olym-perk"><span class="olym-perk-icon">📞</span>Registration Confirmation via WhatsApp</div>
+        <div class="olym-perk"><span class="olym-perk-icon">🥇</span>District &amp; State Level Ranking</div>
+        <div class="olym-perk"><span class="olym-perk-icon">🎖️</span>Medals, Certificates &amp; Special Prizes</div>
+        <div class="olym-perk"><span class="olym-perk-icon">🧠</span>Reasoning, Science, Math &amp; Puzzles</div>
+        <div class="olym-perk"><span class="olym-perk-icon">✍️</span>Cursive Writing — Special Recognition</div>
+        <div class="olym-perk"><span class="olym-perk-icon">📞</span>Confirmation via WhatsApp — Instant</div>
       </div>
     </div>
 
     <!-- RIGHT FORM PANEL -->
     <div class="olym-form-wrap reveal">
+
       <!-- FORM VIEW -->
       <div id="olympiadFormView">
         <div class="olym-form-title">🏅 Olympiad Registration Form</div>
         <div class="olym-form-grid">
+
+          <!-- SECTION: Personal Details -->
+          <div class="olym-section-label">Personal Details</div>
 
           <!-- 1. Name -->
           <div class="olym-fg full">
@@ -2210,29 +2271,21 @@ footer {
             <input type="text" id="oName" placeholder="Apna poora naam likhein...">
           </div>
 
-          <!-- 2. Class -->
+          <!-- 2. Class  |  3. Medium -->
           <div class="olym-fg">
             <label>2. Class</label>
             <select id="oClass">
-              <option value="">— Select Class —</option>
-              <option>Class 1</option>
-              <option>Class 2</option>
-              <option>Class 3</option>
-              <option>Class 4</option>
-              <option>Class 5</option>
-              <option>Class 6</option>
-              <option>Class 7</option>
-              <option>Class 8</option>
-              <option>Class 9</option>
+              <option value="">— Select —</option>
+              <option>Class 1</option><option>Class 2</option><option>Class 3</option>
+              <option>Class 4</option><option>Class 5</option><option>Class 6</option>
+              <option>Class 7</option><option>Class 8</option><option>Class 9</option>
               <option>Class 10</option>
             </select>
           </div>
-
-          <!-- 3. Medium -->
           <div class="olym-fg">
             <label>3. Medium</label>
             <select id="oMedium">
-              <option value="">— Select Medium —</option>
+              <option value="">— Select —</option>
               <option>English</option>
               <option>Hindi</option>
             </select>
@@ -2240,103 +2293,85 @@ footer {
 
           <!-- 4. Cartoon Character -->
           <div class="olym-fg full">
-            <label>4. Favourite Cartoon Character (अपना पसंदीदा Cartoon Character लिखें)</label>
+            <label>4. Favourite Cartoon Character</label>
             <input type="text" id="oCartoon" placeholder="e.g. Doraemon, Shinchan, Chhota Bheem...">
           </div>
 
-          <!-- 5. Mobile Number -->
-          <div class="olym-fg full">
-            <label>5. Mobile Number (10 Digit)</label>
-            <input type="tel" id="oMobile" placeholder="Enter 10-digit mobile number" maxlength="10">
+          <!-- 5. Mobile  |  6. Guardian -->
+          <div class="olym-fg">
+            <label>5. Mobile Number</label>
+            <input type="tel" id="oMobile" placeholder="10-digit number" maxlength="10">
+          </div>
+          <div class="olym-fg">
+            <label>6. Guardian Name</label>
+            <input type="text" id="oGuardian" placeholder="Mata / Pita ka naam">
           </div>
 
-          <!-- 6. Guardian Name -->
-          <div class="olym-fg full">
-            <label>6. Guardian Name (माता / पिता / अभिभावक का नाम)</label>
-            <input type="text" id="oGuardian" placeholder="Guardian ka naam likhein...">
-          </div>
+          <div class="olym-field-divider"></div>
 
-          <!-- 7. Registration Fee -->
+          <!-- SECTION: Olympiad Preferences -->
+          <div class="olym-section-label">Olympiad Preferences</div>
+
+          <!-- 7. Fee Mode -->
           <div class="olym-fg full">
-            <label>7. Registration Fee Payment Mode</label>
-            <div class="olym-checkbox-group">
-              <label class="olym-chip">
-                <input type="radio" name="oFee" value="Online"> 💳 Online
-              </label>
-              <label class="olym-chip">
-                <input type="radio" name="oFee" value="Offline"> 🏫 Offline (At Centre)
-              </label>
+            <label>7. Registration Fee Mode</label>
+            <div class="olym-chip-group">
+              <label class="olym-chip"><input type="radio" name="oFee" value="Online"> 💳 Online</label>
+              <label class="olym-chip"><input type="radio" name="oFee" value="Offline"> 🏫 Offline (At Centre)</label>
             </div>
           </div>
 
           <!-- 8. Subject -->
           <div class="olym-fg full">
             <label>8. Select Subject</label>
-            <div class="olym-checkbox-group">
-              <label class="olym-chip">
-                <input type="radio" name="oSubject" value="Reasoning + Science"> 🔬 Reasoning + Science
-              </label>
-              <label class="olym-chip">
-                <input type="radio" name="oSubject" value="Science + Math"> 📐 Science + Math
-              </label>
+            <div class="olym-chip-group">
+              <label class="olym-chip"><input type="radio" name="oSubject" value="Reasoning + Science"> 🔬 Reasoning + Science</label>
+              <label class="olym-chip"><input type="radio" name="oSubject" value="Science + Math"> 📐 Science + Math</label>
             </div>
           </div>
 
-          <!-- 9. Puzzle Challenge -->
+          <!-- 9. Puzzle Challenge — radio so only ONE can be chosen -->
           <div class="olym-fg full">
-            <label>9. Puzzle Challenge (Apna pasandida puzzle chunein)</label>
-            <div class="olym-checkbox-group">
-              <label class="olym-chip">
-                <input type="checkbox" name="oPuzzle" value="Chess"> ♟️ Chess
-              </label>
-              <label class="olym-chip">
-                <input type="checkbox" name="oPuzzle" value="Ludo"> 🎲 Ludo
-              </label>
-              <label class="olym-chip">
-                <input type="checkbox" name="oPuzzle" value="Money Expenditure"> 💰 Money Expenditure
-              </label>
-              <label class="olym-chip">
-                <input type="checkbox" name="oPuzzle" value="Snake and Ladder"> 🐍 Snake and Ladder
-              </label>
-              <label class="olym-chip">
-                <input type="checkbox" name="oPuzzle" value="Rubik's Cube"> 🟥 Rubik's Cube
-              </label>
-              <label class="olym-chip">
-                <input type="checkbox" name="oPuzzle" value="Other Game"> 🎮 Other Game
-              </label>
+            <label>9. Puzzle Challenge <span style="font-size:10px;color:rgba(255,255,255,0.35);font-weight:400;letter-spacing:0;text-transform:none;">(Sirf ek chunein)</span></label>
+            <div class="olym-chip-group">
+              <label class="olym-chip"><input type="radio" name="oPuzzle" value="Chess"> ♟️ Chess</label>
+              <label class="olym-chip"><input type="radio" name="oPuzzle" value="Ludo"> 🎲 Ludo</label>
+              <label class="olym-chip"><input type="radio" name="oPuzzle" value="Money Expenditure"> 💰 Money Expenditure</label>
+              <label class="olym-chip"><input type="radio" name="oPuzzle" value="Snake and Ladder"> 🐍 Snake &amp; Ladder</label>
+              <label class="olym-chip"><input type="radio" name="oPuzzle" value="Rubik's Cube"> 🟥 Rubik's Cube</label>
+              <label class="olym-chip"><input type="radio" name="oPuzzle" value="Other Game"> 🎮 Other Game</label>
             </div>
           </div>
 
-          <!-- 10. Writing Skills -->
+          <!-- 10. Writing Skills — only Cursive -->
           <div class="olym-fg full">
             <label>10. Writing Skills</label>
-            <div class="olym-checkbox-group">
-              <label class="olym-chip">
-                <input type="radio" name="oWriting" value="Cursive" checked> ✍️ Cursive Writing
-              </label>
+            <div class="olym-chip-group">
+              <label class="olym-chip"><input type="radio" name="oWriting" value="Cursive" checked> ✍️ Cursive Writing</label>
             </div>
-            <p style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:6px;">* Only Cursive Writing is available for this Olympiad.</p>
+            <p style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:5px;">* Is Olympiad mein sirf Cursive Writing available hai.</p>
           </div>
 
         </div><!-- end grid -->
+
         <button class="olym-submit" onclick="handleOlympiad()">🏅 Submit Olympiad Registration →</button>
-        <p style="text-align:center;font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">
-          Submit karne ke baad confirmation WhatsApp par milegi &nbsp;•&nbsp; <a href="tel:7481040468" style="color:#a855f7;font-weight:700;">7481040468</a>
+        <p style="text-align:center;font-size:12px;color:rgba(255,255,255,0.28);margin-top:12px;">
+          Submit ke baad WhatsApp par confirmation milegi &nbsp;•&nbsp;
+          <a href="tel:7481040468" style="color:var(--gold);font-weight:600;">7481040468</a>
         </p>
       </div>
 
-      <!-- THANK YOU VIEW (hidden by default) -->
+      <!-- THANK YOU VIEW -->
       <div class="olym-thankyou" id="olympiadThankyou">
         <span class="olym-ty-icon">🎉</span>
+        <div class="olym-ty-sub">SWAGS OLYMPIAD 2026</div>
         <div class="olym-ty-title">Registration Successful!</div>
+        <div class="olym-ty-divider"></div>
         <p class="olym-ty-text">
-          <strong id="tyName" style="color:#fff;"></strong>, aapka SWAGS OLYMPIAD registration ho gaya hai!<br><br>
-          Aapko WhatsApp par confirmation message bheja ja raha hai.<br>
-          Ajay Gope Sir ki team 24 ghante ke andar contact karegi. 🏅
+          <strong id="tyName" style="color:var(--gold-light);"></strong>, aapka Olympiad registration ho gaya hai!<br>
+          Ajay Gope Sir ki team 24 ghante mein aapse contact karegi. All the best! 🏅
         </p>
-        <a href="https://wa.me/917481040468" class="olym-ty-wa" target="_blank">
-          💬 WhatsApp par Baat Karein
-        </a>
+        <a href="https://wa.me/917481040468" class="olym-ty-wa" target="_blank">💬 WhatsApp par Baat Karein</a>
       </div>
 
     </div><!-- end form wrap -->
@@ -2641,54 +2676,52 @@ function handleOlympiad() {
   const guardian = document.getElementById('oGuardian').value.trim();
   const feeEl    = document.querySelector('input[name="oFee"]:checked');
   const subjectEl= document.querySelector('input[name="oSubject"]:checked');
-  const puzzles  = [...document.querySelectorAll('input[name="oPuzzle"]:checked')].map(e => e.value);
+  const puzzleEl = document.querySelector('input[name="oPuzzle"]:checked');
   const writing  = document.querySelector('input[name="oWriting"]:checked');
 
-  // Validation
-  if (!name || !cls || !medium || !cartoon || !mobile || !guardian || !feeEl || !subjectEl) {
-    alert('⚠️ Kripya sabhi fields bharen! Koi bhi field khali na choden.');
-    return;
-  }
-  if (!/^[0-9]{10}$/.test(mobile)) {
-    alert('⚠️ Mobile number 10 digits ka hona chahiye.');
-    return;
-  }
-  if (puzzles.length === 0) {
-    alert('⚠️ Kripya kam se kam ek Puzzle Challenge chunein.');
-    return;
-  }
+  // Field-by-field validation
+  if (!name)     { alert('⚠️ Student Name likhein.'); return; }
+  if (!cls)      { alert('⚠️ Class select karein.'); return; }
+  if (!medium)   { alert('⚠️ Medium select karein.'); return; }
+  if (!cartoon)  { alert('⚠️ Cartoon Character ka naam likhein.'); return; }
+  if (!mobile || !/^[0-9]{10}$/.test(mobile)) { alert('⚠️ Sahi 10-digit mobile number darj karein.'); return; }
+  if (!guardian) { alert('⚠️ Guardian ka naam likhein.'); return; }
+  if (!feeEl)    { alert('⚠️ Registration Fee mode chunein.'); return; }
+  if (!subjectEl){ alert('⚠️ Subject chunein.'); return; }
+  if (!puzzleEl) { alert('⚠️ Puzzle Challenge chunein.'); return; }
 
-  const fee     = feeEl.value;
-  const subject = subjectEl.value;
-  const puzzle  = puzzles.join(', ');
+  const fee      = feeEl.value;
+  const subject  = subjectEl.value;
+  const puzzle   = puzzleEl.value;
   const writingVal = writing ? writing.value : 'Cursive';
 
-  // WhatsApp message
+  // Build WhatsApp message
   const msg = encodeURIComponent(
-    `🏅 *SWAGS OLYMPIAD Registration*\n` +
+    `🏅 *SWAGS OLYMPIAD Registration 2026*\n` +
     `━━━━━━━━━━━━━━━━━━━━\n\n` +
-    `1️⃣ *Student Name:* ${name}\n` +
+    `1️⃣ *Name:* ${name}\n` +
     `2️⃣ *Class:* ${cls}\n` +
     `3️⃣ *Medium:* ${medium}\n` +
     `4️⃣ *Cartoon Character:* ${cartoon}\n` +
-    `5️⃣ *Mobile Number:* ${mobile}\n` +
-    `6️⃣ *Guardian Name:* ${guardian}\n` +
-    `7️⃣ *Registration Fee:* ${fee}\n` +
+    `5️⃣ *Mobile:* ${mobile}\n` +
+    `6️⃣ *Guardian:* ${guardian}\n` +
+    `7️⃣ *Fee Mode:* ${fee}\n` +
     `8️⃣ *Subject:* ${subject}\n` +
-    `9️⃣ *Puzzle Challenge:* ${puzzle}\n` +
-    `🔟 *Writing Skills:* ${writingVal}\n\n` +
+    `9️⃣ *Puzzle:* ${puzzle}\n` +
+    `🔟 *Writing:* ${writingVal}\n\n` +
     `━━━━━━━━━━━━━━━━━━━━\n` +
-    `_Registered via SWAGS CLASSES Website_ 🌐`
+    `_via SWAGS CLASSES Website_ 🌐`
   );
 
-  // Open WhatsApp
-  window.open(`https://wa.me/917481040468?text=${msg}`, '_blank');
-
-  // Show Thank You
+  // Show Thank You screen first
   document.getElementById('tyName').textContent = name;
   document.getElementById('olympiadFormView').style.display = 'none';
-  const ty = document.getElementById('olympiadThankyou');
-  ty.style.display = 'block';
+  document.getElementById('olympiadThankyou').style.display = 'block';
+
+  // Then navigate to WhatsApp (1.2s delay so Thank You is visible briefly)
+  setTimeout(() => {
+    window.location.href = `https://wa.me/917481040468?text=${msg}`;
+  }, 1200);
 }
 
 // Navbar scroll effect
