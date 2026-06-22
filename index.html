@@ -1396,6 +1396,53 @@ footer {
 .olym-perk:hover { background: rgba(212,160,23,0.07); }
 .olym-perk-icon { font-size: 18px; flex-shrink: 0; }
 
+/* ─── OLYMPIAD SCHEDULE HIGHLIGHT (NEW) ─── */
+.olym-schedule { margin: 0 0 28px; }
+.olym-schedule-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(255,255,255,0.4); margin-bottom: 12px;
+}
+.olym-dates-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.olym-date-pill {
+  background: linear-gradient(150deg, rgba(255,255,255,0.07), rgba(255,255,255,0.015));
+  border: 1.5px solid rgba(212,160,23,0.55);
+  border-radius: 14px;
+  padding: 11px 22px;
+  text-align: center;
+  min-width: 86px;
+}
+.olym-date-pill .dnum {
+  font-family: 'Playfair Display', serif; font-weight: 900; font-size: 27px;
+  color: var(--gold-light); line-height: 1;
+}
+.olym-date-pill .dmon {
+  font-size: 10.5px; letter-spacing: 2px; color: rgba(255,255,255,0.55);
+  text-transform: uppercase; margin-top: 3px;
+}
+.olym-date-amp { font-family: 'Crimson Pro', serif; font-style: italic; font-size: 18px; color: rgba(255,255,255,0.4); }
+.olym-shifts-row { display: flex; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
+.olym-shift-card {
+  flex: 1; min-width: 140px;
+  background: rgba(255,255,255,0.035);
+  border: 1px solid rgba(212,160,23,0.25);
+  border-radius: 12px; padding: 13px 10px; text-align: center;
+}
+.olym-shift-card .ic { font-size: 21px; }
+.olym-shift-card .lbl {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px; color: var(--gold-light);
+  text-transform: uppercase; margin-top: 5px;
+}
+.olym-shift-card .tm { font-size: 12.5px; color: rgba(255,255,255,0.7); font-weight: 600; margin-top: 2px; }
+.olym-idnote {
+  margin-top: 18px; display: flex; gap: 12px; align-items: flex-start;
+  background: rgba(212,160,23,0.07);
+  border: 1.5px dashed rgba(212,160,23,0.45);
+  border-radius: 12px; padding: 14px 16px;
+}
+.olym-idnote .ic { font-size: 19px; flex-shrink: 0; }
+.olym-idnote .txt { font-size: 12.5px; color: rgba(255,255,255,0.65); line-height: 1.65; }
+.olym-idnote .txt b { color: var(--gold-light); }
+
 /* ─── OLYMPIAD FORM CARD ─── */
 .olym-form-wrap {
   background: rgba(255,255,255,0.035);
@@ -1695,8 +1742,8 @@ footer {
     </div>
     <div style="display:flex;justify-content:center;margin-bottom:40px;margin-top:-30px;animation:fadeDown 0.8s ease 0.45s both;">
       <a href="#olympiad" class="btn-olympiad-hero">
-        🏅 SWAGS OLYMPIAD Registration
-        <span class="olym-badge-hero">NEW</span>
+        🏅 SWAGS OLYMPIAD JUNE 2026 — Register Now
+        <span class="olym-badge-hero">OPEN</span>
       </a>
     </div>
     <div class="hero-stats">
@@ -2242,8 +2289,8 @@ footer {
     <!-- LEFT INFO PANEL -->
     <div class="olym-left reveal">
       <span class="olym-trophy">🏅</span>
-      <div class="olym-eyebrow">SWAGS OLYMPIAD 2026</div>
-      <h2 class="olym-title">Register for<br><span>SWAGS OLYMPIAD</span></h2>
+      <div class="olym-eyebrow">SWAGS OLYMPIAD JUNE 2026</div>
+      <h2 class="olym-title">Register for<br><span>SWAGS OLYMPIAD<br>JUNE 2026</span></h2>
       <p class="olym-desc">Jharkhand ke sabse exciting Olympiad mein apna naam darj karein! Science, Math, Reasoning, Puzzles aur Writing Skills ke through apni pratibha dikhao aur bade prizes jeeto.</p>
       <div class="olym-perks">
         <div class="olym-perk"><span class="olym-perk-icon">🥇</span>District &amp; State Level Ranking</div>
@@ -2259,21 +2306,38 @@ footer {
 
       <!-- FORM VIEW -->
       <div id="olympiadFormView">
-        <div class="olym-form-title">🏅 Olympiad Registration Form</div>
+
+        <!-- Form Header with star banner -->
+        <div style="text-align:center;margin-bottom:22px;">
+          <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(212,160,23,0.12);border:1px solid rgba(212,160,23,0.4);border-radius:30px;padding:6px 18px;font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold-light);text-transform:uppercase;margin-bottom:12px;">
+            ⭐ Registration Open ⭐
+          </div>
+          <div class="olym-form-title">🏅 SWAGS OLYMPIAD JUNE 2026<br>
+            <span style="font-size:13px;font-weight:500;color:rgba(255,255,255,0.45);font-family:'DM Sans',sans-serif;letter-spacing:0;">Registration Form</span>
+          </div>
+        </div>
+
         <div class="olym-form-grid">
 
           <!-- SECTION: Personal Details -->
-          <div class="olym-section-label">Personal Details</div>
+          <div class="olym-section-label">👤 Personal Details</div>
 
-          <!-- 1. Name -->
+          <!-- 1. Student ID -->
+          <div class="olym-fg full" style="background:rgba(212,160,23,0.07);border:1.5px dashed rgba(212,160,23,0.5);border-radius:12px;padding:14px 16px;gap:8px;">
+            <label style="color:var(--gold-light);font-size:11px;letter-spacing:1.5px;">1. Student ID <span style="font-size:9.5px;font-weight:400;color:rgba(255,255,255,0.4);text-transform:none;letter-spacing:0;">(Ajay Sir aapko batayenge — e.g. S1, S2, S3...)</span></label>
+            <input type="text" id="oStudentId" placeholder="e.g. S1, S5, S12 ..." style="text-transform:uppercase;" oninput="this.value=this.value.toUpperCase()">
+            <p id="oStudentIdErr" style="display:none;font-size:11px;color:#f87171;margin-top:4px;">⚠️ Student ID format sahi nahi hai — S ke baad number likhein (e.g. S1, S12)</p>
+          </div>
+
+          <!-- 2. Name -->
           <div class="olym-fg full">
-            <label>1. Student Name</label>
+            <label>2. Student Name</label>
             <input type="text" id="oName" placeholder="Apna poora naam likhein...">
           </div>
 
-          <!-- 2. Class  |  3. Medium -->
+          <!-- 3. Class  |  4. Medium -->
           <div class="olym-fg">
-            <label>2. Class</label>
+            <label>3. Class</label>
             <select id="oClass">
               <option value="">— Select —</option>
               <option>Class 1</option><option>Class 2</option><option>Class 3</option>
@@ -2283,7 +2347,7 @@ footer {
             </select>
           </div>
           <div class="olym-fg">
-            <label>3. Medium</label>
+            <label>4. Medium</label>
             <select id="oMedium">
               <option value="">— Select —</option>
               <option>English</option>
@@ -2291,48 +2355,83 @@ footer {
             </select>
           </div>
 
-          <!-- 4. Cartoon Character -->
+          <!-- 5. Cartoon Character -->
           <div class="olym-fg full">
-            <label>4. Favourite Cartoon Character</label>
+            <label>5. Favourite Cartoon Character</label>
             <input type="text" id="oCartoon" placeholder="e.g. Doraemon, Shinchan, Chhota Bheem...">
           </div>
 
-          <!-- 5. Mobile  |  6. Guardian -->
+          <!-- 6. Mobile  |  7. Guardian -->
           <div class="olym-fg">
-            <label>5. Mobile Number</label>
+            <label>6. Mobile Number</label>
             <input type="tel" id="oMobile" placeholder="10-digit number" maxlength="10">
           </div>
           <div class="olym-fg">
-            <label>6. Guardian Name</label>
+            <label>7. Guardian Name</label>
             <input type="text" id="oGuardian" placeholder="Mata / Pita ka naam">
           </div>
 
           <div class="olym-field-divider"></div>
 
-          <!-- SECTION: Olympiad Preferences -->
-          <div class="olym-section-label">Olympiad Preferences</div>
+          <!-- SECTION: Exam Schedule -->
+          <div class="olym-section-label">📅 Exam Schedule</div>
 
-          <!-- 7. Fee Mode -->
+          <!-- 8. Exam Date -->
           <div class="olym-fg full">
-            <label>7. Registration Fee Mode</label>
+            <label>8. Preferred Exam Date</label>
+            <div class="olym-chip-group">
+              <label class="olym-chip">
+                <input type="radio" name="oDate" value="26 June 2026 (Thursday)">
+                📅 26<sup>th</sup> June 2026 <span style="font-size:11px;opacity:0.6;">(Thursday)</span>
+              </label>
+              <label class="olym-chip">
+                <input type="radio" name="oDate" value="27 June 2026 (Friday)">
+                📅 27<sup>th</sup> June 2026 <span style="font-size:11px;opacity:0.6;">(Friday)</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 9. Shift -->
+          <div class="olym-fg full">
+            <label>9. Preferred Shift</label>
+            <div class="olym-chip-group">
+              <label class="olym-chip">
+                <input type="radio" name="oShift" value="Morning (7:00 AM – 11:00 AM)">
+                ☀️ Morning &nbsp;<span style="font-size:11.5px;opacity:0.7;">7:00 AM – 11:00 AM</span>
+              </label>
+              <label class="olym-chip">
+                <input type="radio" name="oShift" value="Evening (3:00 PM – 7:00 PM)">
+                🌙 Evening &nbsp;<span style="font-size:11.5px;opacity:0.7;">3:00 PM – 7:00 PM</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="olym-field-divider"></div>
+
+          <!-- SECTION: Olympiad Preferences -->
+          <div class="olym-section-label">🏅 Olympiad Preferences</div>
+
+          <!-- 10. Fee Mode -->
+          <div class="olym-fg full">
+            <label>10. Registration Fee Mode</label>
             <div class="olym-chip-group">
               <label class="olym-chip"><input type="radio" name="oFee" value="Online"> 💳 Online</label>
               <label class="olym-chip"><input type="radio" name="oFee" value="Offline"> 🏫 Offline (At Centre)</label>
             </div>
           </div>
 
-          <!-- 8. Subject -->
+          <!-- 11. Subject -->
           <div class="olym-fg full">
-            <label>8. Select Subject</label>
+            <label>11. Select Subject</label>
             <div class="olym-chip-group">
               <label class="olym-chip"><input type="radio" name="oSubject" value="Reasoning + Science"> 🔬 Reasoning + Science</label>
               <label class="olym-chip"><input type="radio" name="oSubject" value="Science + Math"> 📐 Science + Math</label>
             </div>
           </div>
 
-          <!-- 9. Puzzle Challenge — radio so only ONE can be chosen -->
+          <!-- 12. Puzzle Challenge -->
           <div class="olym-fg full">
-            <label>9. Puzzle Challenge <span style="font-size:10px;color:rgba(255,255,255,0.35);font-weight:400;letter-spacing:0;text-transform:none;">(Sirf ek chunein)</span></label>
+            <label>12. Puzzle Challenge <span style="font-size:10px;color:rgba(255,255,255,0.35);font-weight:400;letter-spacing:0;text-transform:none;">(Sirf ek chunein)</span></label>
             <div class="olym-chip-group">
               <label class="olym-chip"><input type="radio" name="oPuzzle" value="Chess"> ♟️ Chess</label>
               <label class="olym-chip"><input type="radio" name="oPuzzle" value="Ludo"> 🎲 Ludo</label>
@@ -2343,9 +2442,9 @@ footer {
             </div>
           </div>
 
-          <!-- 10. Writing Skills — only Cursive -->
+          <!-- 13. Writing Skills -->
           <div class="olym-fg full">
-            <label>10. Writing Skills</label>
+            <label>13. Writing Skills</label>
             <div class="olym-chip-group">
               <label class="olym-chip"><input type="radio" name="oWriting" value="Cursive" checked> ✍️ Cursive Writing</label>
             </div>
@@ -2354,7 +2453,7 @@ footer {
 
         </div><!-- end grid -->
 
-        <button class="olym-submit" onclick="handleOlympiad()">🏅 Submit Olympiad Registration →</button>
+        <button class="olym-submit" onclick="handleOlympiad()">🏅 Submit Registration →</button>
         <p style="text-align:center;font-size:12px;color:rgba(255,255,255,0.28);margin-top:12px;">
           Submit ke baad WhatsApp par confirmation milegi &nbsp;•&nbsp;
           <a href="tel:7481040468" style="color:var(--gold);font-weight:600;">7481040468</a>
@@ -2364,7 +2463,7 @@ footer {
       <!-- THANK YOU VIEW -->
       <div class="olym-thankyou" id="olympiadThankyou">
         <span class="olym-ty-icon">🎉</span>
-        <div class="olym-ty-sub">SWAGS OLYMPIAD 2026</div>
+        <div class="olym-ty-sub">SWAGS OLYMPIAD JUNE 2026</div>
         <div class="olym-ty-title">Registration Successful!</div>
         <div class="olym-ty-divider"></div>
         <p class="olym-ty-text">
@@ -2668,16 +2767,30 @@ function handleRegister() {
 
 // OLYMPIAD REGISTRATION HANDLER
 function handleOlympiad() {
-  const name     = document.getElementById('oName').value.trim();
-  const cls      = document.getElementById('oClass').value;
-  const medium   = document.getElementById('oMedium').value;
-  const cartoon  = document.getElementById('oCartoon').value.trim();
-  const mobile   = document.getElementById('oMobile').value.trim();
-  const guardian = document.getElementById('oGuardian').value.trim();
-  const feeEl    = document.querySelector('input[name="oFee"]:checked');
-  const subjectEl= document.querySelector('input[name="oSubject"]:checked');
-  const puzzleEl = document.querySelector('input[name="oPuzzle"]:checked');
-  const writing  = document.querySelector('input[name="oWriting"]:checked');
+  const studentId = document.getElementById('oStudentId').value.trim().toUpperCase();
+  const name      = document.getElementById('oName').value.trim();
+  const cls       = document.getElementById('oClass').value;
+  const medium    = document.getElementById('oMedium').value;
+  const cartoon   = document.getElementById('oCartoon').value.trim();
+  const mobile    = document.getElementById('oMobile').value.trim();
+  const guardian  = document.getElementById('oGuardian').value.trim();
+  const dateEl    = document.querySelector('input[name="oDate"]:checked');
+  const shiftEl   = document.querySelector('input[name="oShift"]:checked');
+  const feeEl     = document.querySelector('input[name="oFee"]:checked');
+  const subjectEl = document.querySelector('input[name="oSubject"]:checked');
+  const puzzleEl  = document.querySelector('input[name="oPuzzle"]:checked');
+  const writing   = document.querySelector('input[name="oWriting"]:checked');
+
+  // Student ID validation — must be S followed by a number (e.g. S1, S12)
+  const idErr = document.getElementById('oStudentIdErr');
+  const validId = /^S[0-9]+$/.test(studentId);
+  if (!studentId || !validId) {
+    idErr.style.display = 'block';
+    document.getElementById('oStudentId').focus();
+    return;
+  } else {
+    idErr.style.display = 'none';
+  }
 
   // Field-by-field validation
   if (!name)     { alert('⚠️ Student Name likhein.'); return; }
@@ -2686,25 +2799,30 @@ function handleOlympiad() {
   if (!cartoon)  { alert('⚠️ Cartoon Character ka naam likhein.'); return; }
   if (!mobile || !/^[0-9]{10}$/.test(mobile)) { alert('⚠️ Sahi 10-digit mobile number darj karein.'); return; }
   if (!guardian) { alert('⚠️ Guardian ka naam likhein.'); return; }
+  if (!dateEl)   { alert('⚠️ Exam Date chunein.'); return; }
+  if (!shiftEl)  { alert('⚠️ Shift chunein (Morning / Evening).'); return; }
   if (!feeEl)    { alert('⚠️ Registration Fee mode chunein.'); return; }
   if (!subjectEl){ alert('⚠️ Subject chunein.'); return; }
   if (!puzzleEl) { alert('⚠️ Puzzle Challenge chunein.'); return; }
 
-  const fee      = feeEl.value;
-  const subject  = subjectEl.value;
-  const puzzle   = puzzleEl.value;
+  const fee        = feeEl.value;
+  const subject    = subjectEl.value;
+  const puzzle     = puzzleEl.value;
   const writingVal = writing ? writing.value : 'Cursive';
 
   // Build WhatsApp message
   const msg = encodeURIComponent(
-    `🏅 *SWAGS OLYMPIAD Registration 2026*\n` +
+    `🏅 *SWAGS OLYMPIAD JUNE 2026 — Registration*\n` +
     `━━━━━━━━━━━━━━━━━━━━\n\n` +
+    `🆔 *Student ID:* ${studentId}\n` +
     `1️⃣ *Name:* ${name}\n` +
     `2️⃣ *Class:* ${cls}\n` +
     `3️⃣ *Medium:* ${medium}\n` +
     `4️⃣ *Cartoon Character:* ${cartoon}\n` +
     `5️⃣ *Mobile:* ${mobile}\n` +
-    `6️⃣ *Guardian:* ${guardian}\n` +
+    `6️⃣ *Guardian:* ${guardian}\n\n` +
+    `📅 *Exam Date:* ${dateEl.value}\n` +
+    `⏰ *Shift:* ${shiftEl.value}\n\n` +
     `7️⃣ *Fee Mode:* ${fee}\n` +
     `8️⃣ *Subject:* ${subject}\n` +
     `9️⃣ *Puzzle:* ${puzzle}\n` +
@@ -2713,12 +2831,12 @@ function handleOlympiad() {
     `_via SWAGS CLASSES Website_ 🌐`
   );
 
-  // Show Thank You screen first
+  // Show Thank You screen
   document.getElementById('tyName').textContent = name;
   document.getElementById('olympiadFormView').style.display = 'none';
   document.getElementById('olympiadThankyou').style.display = 'block';
 
-  // Then navigate to WhatsApp (1.2s delay so Thank You is visible briefly)
+  // Open WhatsApp after short delay
   setTimeout(() => {
     window.location.href = `https://wa.me/917481040468?text=${msg}`;
   }, 1200);
