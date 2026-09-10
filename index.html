@@ -1770,190 +1770,6 @@ footer {
   margin-top: 5px;
 }
 
-/* ─── QUIZ MODAL OVERLAY ─── */
-#bqModal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: rgba(4,17,31,0.92);
-  backdrop-filter: blur(6px);
-  overflow-y: auto;
-  padding: 24px 16px 60px;
-}
-#bqModal.open { display: block; }
-.bq-modal-inner {
-  max-width: 880px;
-  margin: 0 auto;
-  background: var(--cream);
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-}
-.bq-modal-topbar {
-  background: linear-gradient(90deg, var(--navy), var(--navy-light));
-  padding: 16px 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 5;
-}
-.bq-modal-brand {
-  font-family: 'Playfair Display', serif;
-  color: var(--gold-light);
-  font-weight: 700;
-  font-size: 15px;
-}
-.bq-modal-brand small {
-  display: block;
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  color: rgba(255,255,255,0.55);
-  font-size: 10.5px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  margin-top: 2px;
-}
-.bq-close-btn {
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.2);
-  color: #fff;
-  width: 34px; height: 34px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  transition: all 0.2s;
-}
-.bq-close-btn:hover { background: var(--gold); color: var(--navy); border-color: var(--gold); }
-
-.bq-modal-body { padding: 28px 26px 40px; }
-
-.bq-crumbs { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
-.bq-crumbs button {
-  background: none; border: none; color: var(--gold); cursor: pointer;
-  font-size: 12px; padding: 0; text-decoration: underline; font-family: inherit;
-}
-
-/* Year select grid (inside modal, before a year is picked) */
-.bq-select-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--navy); margin-bottom: 6px; }
-.bq-select-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 26px; }
-.bq-modal-year-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
-@media(max-width:560px){ .bq-modal-year-grid{ grid-template-columns: 1fr; } }
-.bq-modal-year-card {
-  position: relative;
-  background: #fff;
-  border: 1.5px solid var(--border);
-  border-left: 5px solid var(--navy);
-  border-radius: 4px;
-  padding: 20px 20px;
-  cursor: pointer;
-  text-align: left;
-  transition: all 0.2s;
-}
-.bq-modal-year-card:hover { border-left-color: var(--gold); box-shadow: 0 8px 24px rgba(10,35,66,0.1); transform: translateY(-2px); }
-.bq-modal-year-card .yr { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 26px; color: var(--navy); }
-.bq-modal-year-card:hover .yr { color: var(--gold); }
-.bq-modal-year-card .cnt { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
-.bq-modal-year-card .go { font-size: 12px; font-weight: 700; color: var(--gold); margin-top: 10px; }
-
-/* Quiz-taking layout inside modal */
-.bq-quiz-topbar {
-  display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap:8px;
-  border-bottom: 2px solid var(--navy); padding-bottom: 12px; margin-bottom: 20px;
-}
-.bq-quiz-topbar h3 { font-family: 'Playfair Display', serif; font-size: 20px; color: var(--navy); margin:0; }
-.bq-quiz-topbar .tag { font-size: 13px; color: var(--text-muted); }
-
-.bq-score-pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--navy); color: var(--gold-light);
-  padding: 6px 14px; border-radius: 20px; font-size: 12.5px; font-weight: 700;
-  margin-bottom: 18px;
-}
-
-.bq-lang-toggle { display: inline-flex; border: 1px solid var(--navy); border-radius: 8px; overflow: hidden; margin-bottom: 20px; }
-.bq-lang-toggle button {
-  background: #fff; border: none; padding: 8px 16px; cursor: pointer; font-size: 13px; font-weight: 600; color: var(--navy);
-  font-family: 'DM Sans', sans-serif;
-}
-.bq-lang-toggle button.active { background: var(--navy); color: #fff; }
-
-.bq-qcounter { font-size: 13px; color: var(--text-muted); margin-bottom: 4px; font-weight: 600; }
-.bq-question-en { font-family: 'Playfair Display', serif; font-size: 19px; line-height: 1.5; color: var(--navy); margin: 0 0 4px; }
-.bq-question-hi { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.6; color: var(--navy-light); margin: 0 0 22px; }
-.bq-lang-en .bq-question-hi, .bq-lang-en .bq-opt-hi { display: none; }
-.bq-lang-hi .bq-question-en, .bq-lang-hi .bq-opt-en { display: none; }
-
-.bq-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 6px; }
-.bq-opt {
-  display: flex; align-items: flex-start; gap: 13px;
-  border: 1.5px solid var(--border); background: #fff; border-radius: 10px;
-  padding: 13px 15px; cursor: pointer; text-align: left; width: 100%;
-  transition: border-color 0.15s, background 0.15s;
-  font-family: 'DM Sans', sans-serif;
-}
-.bq-opt:hover:not(.bq-locked) { border-color: var(--navy); }
-.bq-opt .bq-letter {
-  flex: none; width: 26px; height: 26px; border-radius: 50%;
-  border: 1.5px solid var(--navy); color: var(--navy);
-  display: grid; place-items: center; font-weight: 700; font-size: 12.5px;
-  font-family: 'Playfair Display', serif;
-}
-.bq-opt .bq-opt-text { flex: 1; }
-.bq-opt .bq-opt-en { font-size: 14.5px; color: var(--text); }
-.bq-opt .bq-opt-hi { font-size: 13.5px; color: var(--text-muted); margin-top: 2px; }
-.bq-opt.bq-correct { border-color: #2f8f5c; background: #eaf7ef; }
-.bq-opt.bq-correct .bq-letter { background: #2f8f5c; border-color: #2f8f5c; color: #fff; }
-.bq-opt.bq-wrong-pick { border-color: #c0392b; background: #fbeae7; }
-.bq-opt.bq-wrong-pick .bq-letter { background: #c0392b; border-color: #c0392b; color: #fff; }
-.bq-opt.bq-locked { cursor: default; }
-
-.bq-result-flag { display: none; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; margin: 16px 0 4px; }
-.bq-result-flag.show { display: flex; }
-.bq-result-flag.ok { color: #2f8f5c; }
-.bq-result-flag.no { color: #c0392b; }
-
-.bq-explain-box { display: none; margin-top: 14px; border: 1.5px solid var(--gold); background: var(--gold-pale); border-radius: 12px; padding: 16px 18px; }
-.bq-explain-box.show { display: block; animation: bqReveal 0.25s ease; }
-@keyframes bqReveal { from { opacity:0; transform: translateY(-6px);} to {opacity:1; transform:translateY(0);} }
-.bq-explain-box .bq-exp-label { font-size: 11px; letter-spacing: 1.5px; color: var(--gold); font-weight: 800; margin-bottom: 8px; text-transform: uppercase; }
-.bq-explain-box .bq-exp-en { font-size: 13.5px; line-height: 1.55; color: var(--text); margin-bottom: 8px; }
-.bq-explain-box .bq-exp-hi { font-size: 13.5px; line-height: 1.6; color: var(--text-muted); }
-
-.bq-nav-buttons { display: flex; justify-content: space-between; margin-top: 28px; gap: 12px; }
-.bq-navbtn {
-  border: 1.5px solid var(--navy); background: #fff; color: var(--navy); border-radius: 25px;
-  padding: 11px 24px; font-weight: 700; cursor: pointer; font-size: 13.5px;
-  font-family: 'DM Sans', sans-serif;
-}
-.bq-navbtn.primary { background: var(--navy); color: #fff; }
-.bq-navbtn:disabled { opacity: 0.35; cursor: not-allowed; }
-.bq-navbtn:hover:not(:disabled) { border-color: var(--gold); }
-.bq-navbtn.primary:hover:not(:disabled) { background: var(--navy-light); }
-
-.bq-qnav-label { font-size: 11px; letter-spacing: 1.5px; color: var(--text-muted); margin: 26px 0 10px; text-transform: uppercase; }
-.bq-qnav-grid { display: grid; grid-template-columns: repeat(10,1fr); gap: 6px; }
-@media(max-width:560px){ .bq-qnav-grid{ grid-template-columns: repeat(5,1fr);} }
-.bq-qnav-btn {
-  aspect-ratio: 1; border: 1px solid var(--border); background: #fff; color: var(--navy);
-  font-size: 12px; cursor: pointer; font-weight: 700; border-radius: 6px;
-  font-family: 'DM Sans', sans-serif;
-}
-.bq-qnav-btn:hover { border-color: var(--gold); }
-.bq-qnav-btn.current { border-color: var(--navy); background: var(--navy); color: #fff; }
-.bq-qnav-btn.done-correct { background: #2f8f5c; border-color: #2f8f5c; color: #fff; }
-.bq-qnav-btn.done-wrong { background: #c0392b; border-color: #c0392b; color: #fff; }
-
-.bq-finish-panel { text-align: center; padding: 40px 10px; }
-.bq-finish-panel h3 { font-family: 'Playfair Display', serif; font-size: 24px; color: var(--navy); }
-.bq-finish-score { font-family: 'Playfair Display', serif; font-size: 46px; color: var(--gold); margin: 14px 0; font-weight: 700; }
-.bq-finish-actions { display: flex; gap: 12px; justify-content: center; margin-top: 22px; flex-wrap: wrap; }
 </style>
 </head>
 <body>
@@ -1981,7 +1797,7 @@ footer {
       <li><a href="#courses">Courses</a></li>
       <li><a href="#fees">Fees</a></li>
       <li><a href="#events">Events</a></li>
-      <li><a href="#bedquiz" onclick="setTimeout(()=>bqOpenModal(),450)" style="color:#7fd4ff;font-weight:700;">🎓 B.Ed Quiz</a></li>
+      <li><a href="https://script.google.com/macros/s/AKfycbwLduZ4LgamH5veHEMRoOH9TC4vfUx5b5LhmXnGuGP3uA8iXyuGRv1DMZOg-rXYBWNNFw/exec" target="_blank" rel="noopener" style="color:#7fd4ff;font-weight:700;">🎓 B.Ed Quiz</a></li>
       <li><a href="#olympiad" style="color:#c084fc;font-weight:700;">🏅 Olympiad</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#testimonials">Results</a></li>
@@ -1997,7 +1813,7 @@ footer {
     <a href="#courses" onclick="toggleMobileNav()">Courses</a>
     <a href="#fees" onclick="toggleMobileNav()">Fee Structure</a>
     <a href="#events" onclick="toggleMobileNav()">Events & Notices</a>
-    <a href="#bedquiz" onclick="toggleMobileNav()" style="color:#7fd4ff;font-weight:700;">🎓 B.Ed Sem 3 Quiz (Paper 9)</a>
+    <a href="https://script.google.com/macros/s/AKfycbwLduZ4LgamH5veHEMRoOH9TC4vfUx5b5LhmXnGuGP3uA8iXyuGRv1DMZOg-rXYBWNNFw/exec" target="_blank" rel="noopener" onclick="toggleMobileNav()" style="color:#7fd4ff;font-weight:700;">🎓 B.Ed Sem 3 Quiz (Paper 9)</a>
     <a href="#olympiad" onclick="toggleMobileNav()" style="color:#c084fc;font-weight:700;">🏅 SWAGS Olympiad</a>
     <a href="#holidays" onclick="toggleMobileNav()">Holidays</a>
     <a href="#gallery" onclick="toggleMobileNav()">Gallery</a>
@@ -2381,10 +2197,14 @@ footer {
         </div>
       </div>
 
-      <div class="bq-years-panel">
-        <div class="bq-years-title">Choose a Year to Begin</div>
-        <div class="bq-years-sub">10 objective questions per paper · Full Marks 80</div>
-        <div class="bq-year-grid" id="bqHeroYearGrid"></div>
+      <div class="bq-years-panel" style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+        <div class="bq-years-title">Ready to Practice?</div>
+        <div class="bq-years-sub" style="margin-bottom:24px;">4 years of PYQs · 40 objective questions · Full Marks 80 each</div>
+        <a href="https://script.google.com/macros/s/AKfycbwLduZ4LgamH5veHEMRoOH9TC4vfUx5b5LhmXnGuGP3uA8iXyuGRv1DMZOg-rXYBWNNFw/exec"
+           target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy);font-weight:800;font-size:15px;padding:15px 32px;border-radius:30px;text-decoration:none;font-family:'DM Sans',sans-serif;box-shadow:0 8px 24px rgba(212,160,23,0.35);transition:transform 0.2s;">
+          🚀 Start B.Ed Quiz
+        </a>
       </div>
     </div>
   </div>
@@ -2927,4 +2747,184 @@ footer {
           <a href="tel:7481040468" class="contact-item">
             <div class="contact-icon">📞</div>
             <div class="contact-item-text">
-              <strong>Call / Wha
+              <strong>Call / WhatsApp</strong>
+              <span>7481040468</span>
+            </div>
+          </a>
+          <a href="https://t.me/swagsclasses" class="contact-item" target="_blank">
+            <div class="contact-icon">✈️</div>
+            <div class="contact-item-text">
+              <strong>Telegram Channel</strong>
+              <span>t.me/swagsclasses — Free notes & PDFs</span>
+            </div>
+          </a>
+          <a href="https://www.youtube.com/@SWAGSCLASSES" class="contact-item" target="_blank">
+            <div class="contact-icon">📺</div>
+            <div class="contact-item-text">
+              <strong>YouTube Channel</strong>
+              <span>@SWAGSCLASSES — Free Video Lectures</span>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/swagsclasses" class="contact-item" target="_blank">
+            <div class="contact-icon">📸</div>
+            <div class="contact-item-text">
+              <strong>Instagram</strong>
+              <span>@swagsclasses</span>
+            </div>
+          </a>
+          <div class="contact-item" style="cursor:default;">
+            <div class="contact-icon">📍</div>
+            <div class="contact-item-text">
+              <strong>Our Location</strong>
+              <span>Jharkhand — Kolhan Region</span>
+            </div>
+          </div>
+        </div>
+        <div class="social-section">
+          <div class="social-title">Follow Us On</div>
+          <div class="social-links">
+            <a href="https://www.youtube.com/@SWAGSCLASSES" class="social-btn sb-yt" target="_blank">▶ YouTube</a>
+            <a href="https://www.instagram.com/swagsclasses" class="social-btn sb-ig" target="_blank">📸 Instagram</a>
+            <a href="https://t.me/swagsclasses" class="social-btn sb-tg" target="_blank">✈ Telegram</a>
+            <a href="https://whatsapp.com/channel/0029VbBniSWF1YlWRXPA9W2X" class="social-btn sb-wa" target="_blank">💬 WhatsApp</a>
+            <a href="https://www.facebook.com/share/1D6jXzwphA/" class="social-btn sb-fb" target="_blank">f Facebook</a>
+          </div>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe 
+          src="https://maps.google.com/maps?q=Jharkhand,India&t=&z=10&ie=UTF8&iwloc=&output=embed"
+          title="SWAGS CLASSES Location"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-circle" style="padding:0;overflow:hidden;background:none;">
+            <img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/logo.png" alt="SWAGS Logo" style="width:44px;height:44px;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.parentElement.textContent='SC';this.parentElement.style.background='linear-gradient(135deg,var(--gold),var(--gold-light))';this.parentElement.style.color='var(--navy)';">
+          </div>
+          <div class="footer-logo-text">SWAGS CLASSES</div>
+        </div>
+        <p class="footer-desc">Study With Ajay Gope Sir — Jharkhand's most trusted coaching institute for Class 6–12. Excellence through dedication.</p>
+        <div style="margin-top:16px;">
+          <a href="tel:7481040468" style="color:var(--gold-light);font-size:14px;font-weight:700;text-decoration:none;">📞 7481040468</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#fees">Fee Structure</a></li>
+          <li><a href="#achievements">Achievements</a></li>
+          <li><a href="#register">Enroll Now</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Programmes</div>
+        <ul class="footer-links">
+          <li><a href="#courses">Class 6–8</a></li>
+          <li><a href="#courses">Class 9–10</a></li>
+          <li><a href="#courses">Class 11–12</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Follow Us</div>
+        <ul class="footer-links">
+          <li><a href="https://www.youtube.com/@SWAGSCLASSES" target="_blank">▶ YouTube</a></li>
+          <li><a href="https://www.instagram.com/swagsclasses" target="_blank">📸 Instagram</a></li>
+          <li><a href="https://t.me/swagsclasses" target="_blank">✈ Telegram</a></li>
+          <li><a href="https://whatsapp.com/channel/0029VbBniSWF1YlWRXPA9W2X" target="_blank">💬 WhatsApp</a></li>
+          <li><a href="https://www.facebook.com/share/1D6jXzwphA/" target="_blank">f Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 <span>SWAGS CLASSES</span> | All Rights Reserved | Jharkhand, India</div>
+      <div class="footer-copy">Designed with ❤️ for Students of Jharkhand</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── FLOATING BUTTONS ─── -->
+<a href="https://wa.me/917481040468" class="float-wa" target="_blank" title="Chat on WhatsApp">💬</a>
+<a href="tel:7481040468" class="float-call" title="Call Now">📞</a>
+<a href="#hero" id="btt" title="Back to Top">↑</a>
+
+<!-- ─── SCRIPT ─── -->
+<script>
+// Mobile Nav Toggle
+function toggleMobileNav() {
+  const nav = document.getElementById('mobileNav');
+  nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
+}
+
+// Back to Top Button
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('visible', window.scrollY > 400);
+});
+
+// Scroll Reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(el => observer.observe(el));
+
+// Registration Handler
+function handleRegister() {
+  const name = document.getElementById('fname').value.trim();
+  const mobile = document.getElementById('fmobile').value.trim();
+  const cls = document.getElementById('fclass').value;
+  const batch = document.getElementById('fbatch').value;
+
+  if (!name || !mobile || !cls || !batch) {
+    alert('⚠️ Please fill all fields to register.');
+    return;
+  }
+  if (!/^[0-9]{10}$/.test(mobile)) {
+    alert('⚠️ Please enter a valid 10-digit mobile number.');
+    return;
+  }
+
+  const waMsg = encodeURIComponent(
+    `📝 *New Admission Registration*\n\n` +
+    `👤 Name: ${name}\n` +
+    `📱 Mobile: ${mobile}\n` +
+    `🎓 Class: ${cls}\n` +
+    `⏰ Batch: ${batch}\n\n` +
+    `_Registered via SWAGS CLASSES Website_`
+  );
+  window.open(`https://wa.me/917481040468?text=${waMsg}`, '_blank');
+
+  document.getElementById('fname').value = '';
+  document.getElementById('fmobile').value = '';
+  document.getElementById('fclass').value = '';
+  document.getElementById('fbatch').value = '';
+  alert('✅ Registration submitted! You will be redirected to WhatsApp. Our team will contact you within 24 hours.');
+}
+
+// OLYMPIAD REGISTRATION HANDLER
+function handleOlympiad() {
+  const studentId = document.getElementById('oStudentId').value.trim().toUpperCase();
+  const name      = document.getElementById('oName').value.trim();
+  const cls       = document.getElementById('oClass').value;
+  const medium    = document.getElementById('oMedium').value;
+  const 
