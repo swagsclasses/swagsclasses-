@@ -155,16 +155,19 @@ body {
 
 /* ─── HERO ─── */
 #hero {
-  min-height: 100vh;
   background:
     radial-gradient(ellipse at 20% 50%, rgba(212,160,23,0.08) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 20%, rgba(26,64,128,0.4) 0%, transparent 60%),
     linear-gradient(160deg, #04111f 0%, #0a2342 40%, #0d3062 70%, #0a2342 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   text-align: center;
-  padding: 120px 24px 80px;
+  padding: 150px 24px 46px;
+  position: relative;
+  overflow: hidden;
+}
+#hero-actions {
+  background: linear-gradient(180deg, #071a30 0%, #0a2342 55%, #0d3062 100%);
+  padding: 54px 24px 66px;
+  text-align: center;
   position: relative;
   overflow: hidden;
 }
@@ -1656,14 +1659,39 @@ footer {
       <span>SWAGS CLASSES</span>
     </h1>
     <p class="hero-subtitle-italic">Study With Ajay Gope Sir</p>
-    <p class="hero-tagline">
+    <p class="hero-tagline" style="margin-bottom:0;">
       Empowering students from Class 6 to Class 12 with expert guidance, proven methodology, and a passion for academic excellence — rooted in Jharkhand, trusted across Kolhan.
     </p>
-    <div class="hero-btns">
+  </div>
+</section>
+
+<!-- ─── HERO IMAGE CAROUSEL ─── -->
+<div class="hero-carousel">
+  <div class="hc-track">
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo%206.jpg" alt="SWAGS CLASSES" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo%206.JPG'}"><div class="hc-item-label">SWAGS CLASSES</div></div>
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo1.jpg" alt="Prize Distribution" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo1.JPG'}"><div class="hc-item-label">Prize Distribution</div></div>
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo2.jpg" alt="Classroom Session" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo2.JPG'}"><div class="hc-item-label">Classroom Session</div></div>
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo3.jpg" alt="Events & Celebrations" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo3.JPG'}"><div class="hc-item-label">Events & Celebrations</div></div>
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo4.jpg" alt="Science Activities" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo4.JPG'}"><div class="hc-item-label">Science Activities</div></div>
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo5.jpg" alt="Digital Learning" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo5.JPG'}"><div class="hc-item-label">Digital Learning</div></div>
+    <!-- duplicate set for seamless infinite loop -->
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo%206.jpg" alt="SWAGS CLASSES" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo%206.JPG'}"><div class="hc-item-label">SWAGS CLASSES</div></div>
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo1.jpg" alt="Prize Distribution" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo1.JPG'}"><div class="hc-item-label">Prize Distribution</div></div>
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo2.jpg" alt="Classroom Session" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo2.JPG'}"><div class="hc-item-label">Classroom Session</div></div>
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo3.jpg" alt="Events & Celebrations" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo3.JPG'}"><div class="hc-item-label">Events & Celebrations</div></div>
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo4.jpg" alt="Science Activities" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo4.JPG'}"><div class="hc-item-label">Science Activities</div></div>
+    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo5.jpg" alt="Digital Learning" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo5.JPG'}"><div class="hc-item-label">Digital Learning</div></div>
+  </div>
+</div>
+
+<!-- ─── HERO ACTIONS (Enroll / Olympiad / Stats) ─── -->
+<section id="hero-actions">
+  <div style="position:relative;z-index:2;max-width:800px;margin:0 auto;">
+    <div class="hero-btns" style="margin-bottom:24px;">
       <a href="#register" class="btn-primary">📝 Enroll Now — Free</a>
       <a href="tel:7481040468" class="btn-outline">📞 Call: 7481040468</a>
     </div>
-    <div style="display:flex;justify-content:center;margin-bottom:40px;margin-top:-30px;animation:fadeDown 0.8s ease 0.45s both;">
+    <div style="display:flex;justify-content:center;margin-bottom:44px;">
       <a href="#olympiad" class="btn-olympiad-hero">
         🏅 SWAGS OLYMPIAD REGISTRATION
         <span class="olym-badge-hero">OPEN</span>
@@ -1692,25 +1720,6 @@ footer {
     </div>
   </div>
 </section>
-
-<!-- ─── HERO IMAGE CAROUSEL ─── -->
-<div class="hero-carousel">
-  <div class="hc-track">
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo%206.jpg" alt="SWAGS CLASSES" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo%206.JPG'}"><div class="hc-item-label">SWAGS CLASSES</div></div>
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo1.jpg" alt="Prize Distribution" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo1.JPG'}"><div class="hc-item-label">Prize Distribution</div></div>
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo2.jpg" alt="Classroom Session" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo2.JPG'}"><div class="hc-item-label">Classroom Session</div></div>
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo3.jpg" alt="Events & Celebrations" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo3.JPG'}"><div class="hc-item-label">Events & Celebrations</div></div>
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo4.jpg" alt="Science Activities" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo4.JPG'}"><div class="hc-item-label">Science Activities</div></div>
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo5.jpg" alt="Digital Learning" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo5.JPG'}"><div class="hc-item-label">Digital Learning</div></div>
-    <!-- duplicate set for seamless infinite loop -->
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo%206.jpg" alt="SWAGS CLASSES" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo%206.JPG'}"><div class="hc-item-label">SWAGS CLASSES</div></div>
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo1.jpg" alt="Prize Distribution" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo1.JPG'}"><div class="hc-item-label">Prize Distribution</div></div>
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo2.jpg" alt="Classroom Session" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo2.JPG'}"><div class="hc-item-label">Classroom Session</div></div>
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo3.jpg" alt="Events & Celebrations" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo3.JPG'}"><div class="hc-item-label">Events & Celebrations</div></div>
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo4.jpg" alt="Science Activities" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo4.JPG'}"><div class="hc-item-label">Science Activities</div></div>
-    <div class="hc-item"><img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo5.jpg" alt="Digital Learning" onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo5.JPG'}"><div class="hc-item-label">Digital Learning</div></div>
-  </div>
-</div>
 
 <!-- ─── TICKER ─── -->
 <div class="ticker">
@@ -1741,7 +1750,7 @@ footer {
   <div class="section about-grid reveal">
     <div class="about-img-wrap">
       <div class="about-img-bg" style="overflow:hidden;">
-        <img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo%206.jpg" alt="SWAGS CLASSES" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;"  onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo%206.JPG'}else{this.style.display='none'}">
+        <img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo8.jpg" alt="SWAGS CLASSES" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:1;"  onerror="if(!this.dataset.tried){this.dataset.tried=1;this.src='https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/photo8.JPG'}else{this.style.display='none'}">
         <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:0;">
           <img src="https://raw.githubusercontent.com/swagsclasses/swagsclasses-/main/logo.png" alt="SWAGS Logo" style="width:55%;object-fit:contain;opacity:0.25;" onerror="this.style.display='none';">
         </div>
@@ -2632,7 +2641,7 @@ function animateCounters() {
 const counterObs = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) animateCounters(); });
 }, { threshold: 0.3 });
-document.querySelectorAll('#achievements, #hero').forEach(el => counterObs.observe(el));
+document.querySelectorAll('#achievements, #hero-actions').forEach(el => counterObs.observe(el));
 </script>
 
 </body>
