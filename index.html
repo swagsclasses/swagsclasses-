@@ -1596,6 +1596,44 @@ footer {
   margin-top: 5px;
 }
 
+/* ─── JTET CARD ─── */
+.jtet-card {
+  max-width: 420px;
+  margin: 40px auto 0;
+  background: rgba(255,255,255,0.05);
+  border: 2px solid var(--gold);
+  border-radius: 28px;
+  padding: 36px 30px;
+  text-align: center;
+  box-shadow: 0 10px 34px rgba(212,160,23,0.2);
+  transition: all 0.3s;
+}
+.jtet-card:hover { transform: translateY(-5px); box-shadow: 0 16px 44px rgba(212,160,23,0.35); }
+.jtet-icon { font-size: 44px; margin-bottom: 10px; display:block; }
+.jtet-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.jtet-sub { font-size: 13px; color: rgba(255,255,255,0.55); margin-bottom: 22px; }
+.jtet-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-light));
+  color: var(--navy);
+  font-weight: 800;
+  font-size: 15px;
+  padding: 14px 30px;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(212,160,23,0.35);
+  transition: transform 0.2s;
+}
+.jtet-btn:hover { transform: scale(1.04); }
+
 </style>
 </head>
 <body>
@@ -1624,6 +1662,7 @@ footer {
       <li><a href="#fees">Fees</a></li>
       <li><a href="#events">Events</a></li>
       <li><a href="https://script.google.com/macros/s/AKfycbwLduZ4LgamH5veHEMRoOH9TC4vfUx5b5LhmXnGuGP3uA8iXyuGRv1DMZOg-rXYBWNNFw/exec" target="_blank" rel="noopener" style="color:#7fd4ff;font-weight:700;">🎓 B.Ed Quiz</a></li>
+      <li><a href="#jtet" style="color:#a8ffb0;font-weight:700;">📘 JTET PYQ</a></li>
       <li><a href="#olympiad" style="color:#c084fc;font-weight:700;">🏅 Olympiad</a></li>
       <li><a href="#gallery">Gallery</a></li>
       <li><a href="#testimonials">Results</a></li>
@@ -1640,6 +1679,7 @@ footer {
     <a href="#fees" onclick="toggleMobileNav()">Fee Structure</a>
     <a href="#events" onclick="toggleMobileNav()">Events & Notices</a>
     <a href="https://script.google.com/macros/s/AKfycbwLduZ4LgamH5veHEMRoOH9TC4vfUx5b5LhmXnGuGP3uA8iXyuGRv1DMZOg-rXYBWNNFw/exec" target="_blank" rel="noopener" onclick="toggleMobileNav()" style="color:#7fd4ff;font-weight:700;">🎓 B.Ed Sem 3 Quiz (Paper 9)</a>
+    <a href="#jtet" onclick="toggleMobileNav()" style="color:#a8ffb0;font-weight:700;">📘 JTET PYQ</a>
     <a href="#olympiad" onclick="toggleMobileNav()" style="color:#c084fc;font-weight:700;">🏅 SWAGS Olympiad</a>
     <a href="#holidays" onclick="toggleMobileNav()">Holidays</a>
     <a href="#gallery" onclick="toggleMobileNav()">Gallery</a>
@@ -2055,6 +2095,34 @@ footer {
            target="_blank" rel="noopener"
            style="display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy);font-weight:800;font-size:15px;padding:15px 32px;border-radius:30px;text-decoration:none;font-family:'DM Sans',sans-serif;box-shadow:0 8px 24px rgba(212,160,23,0.35);transition:transform 0.2s;">
           🚀 Start B.Ed Quiz
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── JTET SECTION ─── -->
+<section id="jtet" style="background: linear-gradient(160deg, var(--navy) 0%, #0d3062 55%, var(--navy) 100%); padding: 80px 0;">
+  <div class="section-inner">
+    <div class="text-center reveal">
+      <div class="sec-eyebrow" style="color:var(--gold);">For JTET Aspirants</div>
+      <h2 class="sec-title" style="color:#fff;">JTET Preparation</h2>
+      <p class="sec-desc" style="color:rgba(255,255,255,0.6);">Jharkhand Teacher Eligibility Test ke liye Previous Year Questions practice karein — instant answer checking ke saath.</p>
+    </div>
+    <div class="jtet-card reveal">
+      <span class="jtet-icon">📘</span>
+      <div class="jtet-title">JTET</div>
+      <div class="jtet-sub">Practice Previous Year Questions</div>
+      <a href="https://script.google.com/macros/s/AKfycbyORicGUlHNI07dVXkJ2XZQIvWvWx3phonjCSH_DpZx6QUeCl_QAPOt2Vl4j2GH0f8n/exec" target="_blank" rel="noopener" class="jtet-btn">
+        🚀 JTET PYQ
+      </a>
+
+      <div style="margin-top:26px;padding-top:26px;border-top:1px solid rgba(212,160,23,0.25);">
+        <span class="jtet-icon" style="font-size:34px;">📁</span>
+        <div class="jtet-title" style="font-size:19px;">Panchpargania</div>
+        <div class="jtet-sub">Model Test Paper 1</div>
+        <a href="https://script.google.com/macros/s/AKfycbxmgvOXBgSY4mLIdK32n4KDgm_YQg4qkk9GtP1EICudE-P8I7hq-hmh4dxreUCVeQgTKw/exec" target="_blank" rel="noopener" class="jtet-btn">
+          📝 Model Test Paper 1
         </a>
       </div>
     </div>
