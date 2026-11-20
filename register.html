@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWAGS Olympiad Registration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a2342;--gold:#d4a017;--gold-light:#f0c040}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:linear-gradient(160deg,#04111f 0%,#0a2342 50%,#0d3062 100%);min-height:100vh}
+.oly-x{display:none!important}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:12px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:1px;text-transform:uppercase;margin-bottom:7px}
+.form-group input,.form-group select{width:100%;padding:13px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(212,160,23,.2);border-radius:10px;font-size:14px;color:#fff;font-family:'DM Sans',sans-serif;outline:none;transition:all .25s}
+.form-group input::placeholder{color:rgba(255,255,255,.35)}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold);background:rgba(255,255,255,.12)}
+.form-group select option{background:var(--navy);color:#fff}
+.form-submit{width:100%;padding:15px;margin-top:8px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);font-size:15px;font-weight:800;border:none;border-radius:12px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.form-submit:disabled{opacity:.6}
+</style>
+</head>
+<body>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+/* SWAGS CLASSES — Olympiad Registration System (Firebase) */
+firebase.initializeApp({
+  apiKey: "AIzaSyBVnqkvS0mPyTtX8JP07HAO0AC6OxpOQT0",
+  authDomain: "swags-classes.firebaseapp.com",
+  projectId: "swags-classes",
+  storageBucket: "swags-classes.firebasestorage.app",
+  messagingSenderId: "32648962857",
+  appId: "1:32648962857:web:da82ce1f602822469d4d38"
+});
+const oDB = firebase.firestore();
+const oq = id => document.getElementById(id);
+const oesc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const oopts = a => a.map(v => `<option value="${oesc(v)}">${oesc(v)}</option>`).join('');
+const O_SUBJECTS = ['Science', 'Maths', 'Reasoning', 'English', 'General Knowledge'];
+let oCfg = {}, oEvs = [], oStu = null, oCard = null, oLast = null;
+
+function fmtD(s){
+  const p = String(s || '').split('-');
+  return p.length === 3 ? new Date(+p[0], +p[1] - 1, +p[2]).toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric'}) : (s || '');
+}
+
+/* ---------- CSS + popup shell ---------- */
+(function(){
+  const st = document.createElement('style');
+  st.textContent = `
+.oly-modal{position:fixed;inset:0;background:rgba(4,17,31,.9);z-index:10000;display:none;overflow-y:auto;padding:18px 12px}
+.oly-modal.open{display:block}
+.oly-box{background:linear-gradient(160deg,#0a2342,#0d3062);border:1px solid rgba(212,160,23,.45);border-radius:22px;width:100%;max-width:480px;margin:0 auto;padding:26px 20px;position:relative;color:#fff}
+.oly-x{position:absolute;top:10px;right:14px;background:none;border:none;color:#f0c040;font-size:26px;cursor:pointer}
+.oly-box h3{font-family:'Playfair Display',serif;color:#f0c040;text-align:center;font-size:22px;margin-bottom:6px}
+.oly-box .sub{text-align:center;font-size:13px;color:rgba(255,255,255,.7);margin-bottom:18px;line-height:1.5;white-space:pre-line}
+.oly-box .form-group{margin-bottom:12px}
+.oly-box input[readonly]{opacity:.65}
+.oly-box .oerr{color:#ff9d94;font-size:13px;margin-top:10px;text-align:center}
+.oly-box .ofee{color:#f0c040;font-size:13px;font-weight:700;margin-top:6px}
+.oly-actions{display:flex;gap:10px;margin-top:14px}
+.oly-actions button{flex:1;padding:14px 8px;border-radius:12px;font-weight:800;font-size:14px;cursor:pointer;border:none;font-family:'DM Sans',sans-serif}
+.oly-share{background:#25d366;color:#fff}
+.oly-dl{background:linear-gradient(135deg,#d4a017,#f0c040);color:#0a2342}
+.oly-actions .oly-pdf{background:rgba(255,255,255,.08);color:#f0c040;border:1px solid rgba(212,160,23,.5)}
+#o_card canvas{width:100%;height:auto;border-radius:10px;border:2px solid #d4a017;background:#fff}`;
+  document.head.appendChild(st);
+  document.body.insertAdjacentHTML('beforeend', `
+<div class="oly-modal" id="olyModal"><div class="oly-box">
+  <button class="oly-x" onclick="closeOly()">×</button>
+  <h3>🏅 SWAGS Olympiad Registration</h3>
+  <div class="sub" id="o_notice"></div>
+  <div id="o_v1">
+    <div id="o_start">
+      <div class="form-group"><label>Student ID *</label><input id="o_sid" placeholder="Enter your Student ID (e.g. S2)" autocapitalize="characters"></div>
+      <button class="form-submit" onclick="verifyStudent()">Verify Student ID →</button>
+    </div>
+    <div class="oerr" id="o_err1"></div>
+  </div>
+  <div id="o_v2" style="display:none"><div id="o_form"></div><div class="oerr" id="o_err2"></div>
+    <button class="form-submit" id="o_submit" onclick="submitReg()">Register & Get Admit Card →</button></div>
+  <div id="o_v3" style="display:none">
+    <div id="o_card"></div>
+    <div class="oly-actions">
+      <button class="oly-dl" onclick="imgCard()">⬇ Download Image</button>
+      <button class="oly-share" onclick="shareWA()">📤 Share</button>
+    </div>
+    <div class="oly-actions"><button class="oly-pdf" onclick="pdfCard()">📄 Download PDF</button></div>
+  </div>
+</div></div>`);
+  document.querySelectorAll('.btn-olympiad-hero, a[href*="AKfycbwrXb6wjTfOfZTrSlyfoxw3OawQfJrQrQG2nZM51dc0NY9Fzw7O164SX2yAfElx6v5Wug"]').forEach(a => {
+    a.removeAttribute('target'); a.setAttribute('href', '#'); a.addEventListener('click', openOly);
+  });
+})();
+
+function oShow(n){ [1,2,3].forEach(i => oq('o_v' + i).style.display = i === n ? 'block' : 'none'); oq('olyModal').scrollTop = 0; }
+function closeOly(){ oq('olyModal').classList.remove('open'); document.body.style.overflow = ''; }
+
+async function openOly(e){
+  if (e) e.preventDefault();
+  oq('olyModal').classList.add('open'); document.body.style.overflow = 'hidden';
+  oShow(1); oq('o_start').style.display = 'block'; oq('o_err1').textContent = 'Load ho raha hai...'; oq('o_sid').value = '';
+  try {
+    const [s, ev] = await Promise.all([oDB.doc('settings/main').get(), oDB.collection('events').get()]);
+    oCfg = s.exists ? s.data() : {};
+    oEvs = ev.docs.map(d => ({id: d.id, ...d.data()})).filter(x => x.open !== false);
+    oq('o_notice').textContent = oCfg.notice || 'Pehle apni Student ID verify karein';
+    oq('o_err1').textContent = '';
+    if (oCfg.open === false || !oEvs.length) {
+      oq('o_start').style.display = 'none';
+      oq('o_err1').textContent = (oCfg.open === false ? 'Registration abhi band hai.' : 'Abhi koi Olympiad open nahi hai.') + ' Jaankari ke liye call karein: 7481040468';
+    }
+  } catch (err) { oq('o_err1').textContent = 'Internet check karke dobara try karein.'; }
+}
+
+async function verifyStudent(){
+  let id = oq('o_sid').value.trim().toUpperCase().replace(/[^A-Z0-9_-]/g, '');
+  if (!id) { oq('o_err1').textContent = 'Please enter your Student ID.'; return; }
+  const m = id.match(/^S(\d+)$/);
+  if (m) id = 'S' + parseInt(m[1], 10);
+  oq('o_err1').textContent = 'Checking...';
+  try {
+    const d = await oDB.doc('students/' + id).get();
+    if (d.exists) oStu = {id, ...d.data(), free: false};
+    else if (m) oStu = {id, name: '', cls: '', free: true};
+    else { oq('o_err1').textContent = '❌ Student ID not found. Enter your ID like S2 (S followed by a number) or call: 7481040468'; return; }
+    oq('o_err1').textContent = ''; showForm();
+  } catch (err) { oq('o_err1').textContent = 'Please check your internet and try again.'; }
+}
+
+function showForm(){
+  const fg = (l, h) => `<div class="form-group"><label>${l}</label>${h}</div>`;
+  const sel = (id, a, ph) => `<select id="${id}"><option value="">${ph}</option>${oopts(a)}</select>`;
+  oq('o_form').innerHTML =
+    fg('1. Student ID', `<input value="${oesc(oStu.id)}" readonly>`) +
+    (oStu.free
+      ? fg('2. Student Name *', '<input id="o_name" placeholder="Enter full name">') +
+        fg('3. Class *', `<select id="o_cls"><option value="">Select Class</option>${oopts(['Class 1','Class 2','Class 3','Class 4','Class 5','Class 6','Class 7','Class 8','Class 9','Class 10'])}</select>`)
+      : fg('2. Student Name', `<input value="${oesc(oStu.name)}" readonly>`) +
+        fg('3. Class', `<input value="${oesc(oStu.cls)}" readonly>`)) +
+    fg('Select Olympiad *', `<select id="o_ev" onchange="evChange()"><option value="">Select Olympiad</option>${oEvs.map(e => `<option value="${oesc(e.id)}">${oesc(e.name)}</option>`).join('')}</select><div class="ofee" id="o_feetxt"></div>`) +
+    fg('4. Medium *', sel('o_med', ['Hindi', 'English'], 'Select Medium')) +
+    fg('5. Favourite Cartoon Character *', '<input id="o_cart" placeholder="Jaise: Chhota Bheem">') +
+    fg('6. Mobile Number *', '<input id="o_mob" type="tel" maxlength="10" placeholder="10 digit number">') +
+    fg('7. Guardian Name *', '<input id="o_guard" placeholder="Abhibhavak ka naam">') +
+    fg('8. Preferred Exam Date *', '<select id="o_date"><option value="">Pehle Olympiad chunein</option></select>') +
+    fg('9. Preferred Shift *', sel('o_shift', ['Morning', 'Evening'], 'Select Shift')) +
+    fg('10. Registration Fee Mode *', sel('o_fmode', ['Cash (Institute mein)', 'Online (UPI)'], 'Select Fee Mode')) +
+    fg('11. Select Subject *', sel('o_sub', O_SUBJECTS, 'Select Subject')) +
+    fg('12. Puzzle Challenge *', sel('o_puz', ['Yes', 'No'], 'Select')) +
+    fg('13. Writing Skills – Cursive Writing *', sel('o_wri', ['Yes', 'No'], 'Select'));
+  if (oEvs.length === 1) { oq('o_ev').value = oEvs[0].id; evChange(); }
+  oq('o_err2').textContent = ''; oShow(2);
+}
+function evChange(){
+  const e = oEvs.find(x => x.id === oq('o_ev').value);
+  oq('o_date').innerHTML = '<option value="">Select Exam Date</option>' + (e ? (e.dates || []).map(d => `<option value="${oesc(d)}">${oesc(fmtD(d))}</option>`).join('') : '');
+  oq('o_feetxt').textContent = e ? 'Registration Fee: ₹' + (Number(e.fee) || 0) : '';
+}
+
+async function submitReg(){
+  const g = id => oq(id).value.trim();
+  const e = oEvs.find(x => x.id === g('o_ev'));
+  const d = {studentId: oStu.id, name: oStu.free ? g('o_name') : oStu.name, cls: oStu.free ? g('o_cls') : oStu.cls, medium: g('o_med'), cartoon: g('o_cart'), mobile: g('o_mob'),
+    guardian: g('o_guard'), eventId: e ? e.id : '', eventName: e ? e.name : '', date: g('o_date'), shift: g('o_shift'),
+    feeMode: g('o_fmode'), fee: e ? Number(e.fee) || 0 : 0, subject: g('o_sub'), puzzle: g('o_puz'), writing: g('o_wri')};
+  if (!d.name || !d.cls || !d.eventId || !d.medium || !d.cartoon || !d.mobile || !d.guardian || !d.date || !d.shift || !d.feeMode || !d.subject || !d.puzzle || !d.writing) {
+    oq('o_err2').textContent = '⚠️ Sabhi * wali fields bharein.'; return; }
+  if (!/^[0-9]{10}$/.test(d.mobile)) { oq('o_err2').textContent = '⚠️ 10 digit ka sahi mobile number daalein.'; return; }
+  const btn = oq('o_submit'); btn.disabled = true; btn.textContent = 'Submitting...'; oq('o_err2').textContent = '';
+  d.roll = 'SO26' + String(Date.now()).slice(-6) + Math.floor(Math.random() * 90 + 10);
+  try {
+    await Promise.race([
+      oDB.collection('registrations').doc(d.eventId + '_' + d.studentId).set({...d, createdAt: firebase.firestore.FieldValue.serverTimestamp()}),
+      new Promise((_, rej) => setTimeout(() => rej({code: 'timeout'}), 12000))
+    ]);
+    oLast = d; oCard = drawCard(d);
+    const w = oq('o_card'); w.innerHTML = ''; w.appendChild(oCard); oShow(3);
+  } catch (err) {
+    oq('o_err2').textContent = err.code === 'permission-denied'
+      ? '❌ Is Olympiad mein yeh Student ID pehle se registered hai, ya registration band ho gayi hai. Admit Card ke liye call karein: 7481040468'
+      : '❌ Registration save nahi ho payi. Internet check karke dobara try karein.';
+  }
+  btn.disabled = false; btn.textContent = 'Register & Get Admit Card →';
+}
+
+/* ---------- Admit card ---------- */
+function drawCard(d){
+  const c = document.createElement('canvas'); c.width = 800; c.height = 1100;
+  const x = c.getContext('2d');
+  x.fillStyle = '#fff'; x.fillRect(0, 0, 800, 1100);
+  x.fillStyle = '#0a2342'; x.fillRect(0, 0, 800, 190);
+  x.fillStyle = '#d4a017'; x.fillRect(0, 190, 800, 8);
+  x.strokeStyle = '#d4a017'; x.lineWidth = 6; x.strokeRect(10, 10, 780, 1080);
+  x.textAlign = 'center';
+  x.fillStyle = '#f0c040'; x.font = 'bold 50px Georgia'; x.fillText('SWAGS CLASSES', 400, 92);
+  x.fillStyle = '#fff'; x.font = 'italic 24px Georgia'; x.fillText('Study With Ajay Gope Sir', 400, 134);
+  x.font = '16px Arial'; x.fillStyle = 'rgba(255,255,255,.7)'; x.fillText('Call: 7481040468', 400, 166);
+  x.fillStyle = '#fdf3d0'; x.fillRect(150, 222, 500, 52);
+  x.strokeStyle = '#d4a017'; x.lineWidth = 2; x.strokeRect(150, 222, 500, 52);
+  x.fillStyle = '#0a2342'; x.font = 'bold 26px Arial'; x.fillText('OLYMPIAD 2026 — ADMIT CARD', 400, 257);
+  const f = [['ROLL NO', d.roll], ['STUDENT ID', d.studentId], ['STUDENT NAME', d.name.toUpperCase()], ['CLASS', d.cls],
+    ['OLYMPIAD', d.eventName], ['SUBJECT', d.subject], ['MEDIUM', d.medium], ['GUARDIAN', d.guardian],
+    ['EXAM DATE', fmtD(d.date)], ['SHIFT', d.shift], ['FEE MODE', d.feeMode + (d.fee ? ' (₹' + d.fee + ')' : '')], ['MOBILE', d.mobile]];
+  x.textAlign = 'left';
+  f.forEach((r, i) => {
+    const cx = i % 2 ? 420 : 50, cy = 305 + Math.floor(i / 2) * 90;
+    x.fillStyle = '#7a7f8c'; x.font = 'bold 13px Arial'; x.fillText(r[0], cx, cy);
+    let s = 24; x.font = 'bold 24px Arial';
+    while (x.measureText(r[1]).width > 330 && s > 12) { s--; x.font = 'bold ' + s + 'px Arial'; }
+    x.fillStyle = i === 0 ? '#c0392b' : '#0a2342'; x.fillText(r[1], cx, cy + 30);
+    x.strokeStyle = '#eee'; x.lineWidth = 1; x.beginPath(); x.moveTo(cx, cy + 44); x.lineTo(cx + 330, cy + 44); x.stroke();
+  });
+  x.textAlign = 'center'; x.fillStyle = '#0a2342'; x.font = 'bold 18px Arial';
+  x.fillText('Puzzle Challenge: ' + d.puzzle + '   |   Cursive Writing: ' + d.writing, 400, 838);
+  x.textAlign = 'left';
+  x.fillStyle = '#faf8f3'; x.fillRect(40, 862, 720, 128);
+  x.strokeStyle = '#d4a017'; x.lineWidth = 2; x.strokeRect(40, 862, 720, 128);
+  x.fillStyle = '#0a2342'; x.font = 'bold 18px Arial'; x.fillText('INSTRUCTIONS', 58, 890);
+  x.font = '16px Arial'; x.fillStyle = '#333';
+  x.fillText('• Exam ke din yeh Admit Card (print ya mobile mein) saath layein.', 58, 918);
+  x.fillText('• Exam se 15 minute pehle pahunchein. Pen/Pencil saath layein.', 58, 943);
+  x.fillText('• Exam ka time/jagah ki jaankari WhatsApp par di jayegi.', 58, 968);
+  x.strokeStyle = '#0a2342'; x.beginPath(); x.moveTo(520, 1040); x.lineTo(750, 1040); x.stroke();
+  x.fillStyle = '#0a2342'; x.font = 'bold 16px Arial'; x.textAlign = 'center'; x.fillText('Ajay Gope Sir (Director)', 635, 1064);
+  x.textAlign = 'left'; x.fillStyle = '#7a7f8c'; x.font = '14px Arial';
+  x.fillText('Generated: ' + new Date().toLocaleDateString('en-IN'), 50, 1064);
+  return c;
+}
+
+function loadPDF(){
+  return window.jspdf ? Promise.resolve() : new Promise((res, rej) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+    s.onload = res; s.onerror = rej; document.head.appendChild(s);
+  });
+}
+async function pdfCard(){
+  if (!oCard) return;
+  try {
+    await loadPDF();
+    const p = new window.jspdf.jsPDF({unit: 'mm', format: 'a4'});
+    p.addImage(oCard.toDataURL('image/jpeg', .95), 'JPEG', 15, 10, 180, 247.5);
+    p.save('SWAGS_Admit_Card_' + oLast.roll + '.pdf');
+  } catch (e) { alert('PDF nahi ban paya. Internet check karein.'); }
+}
+function imgCard(){
+  if (!oCard) return;
+  const a = document.createElement('a');
+  a.download = 'SWAGS_Admit_Card_' + oLast.roll + '.png';
+  a.href = oCard.toDataURL('image/png'); a.click();
+}
+function shareWA(){
+  if (!oCard) return;
+  oCard.toBlob(async b => {
+    const f = new File([b], 'SWAGS_Admit_Card_' + oLast.roll + '.png', {type: 'image/png'});
+    const txt = 'SWAGS Olympiad Admit Card\nName: ' + oLast.name + '\nRoll No: ' + oLast.roll + '\nExam Date: ' + fmtD(oLast.date) + ' (' + oLast.shift + ')';
+    if (navigator.canShare && navigator.canShare({files: [f]})) {
+      try { await navigator.share({files: [f], text: txt}); } catch (e) {}
+    } else { window.open('https://wa.me/?text=' + encodeURIComponent(txt), '_blank'); }
+  });
+}
+
+</script>
+<script>openOly();</script>
+</body>
+</html>
