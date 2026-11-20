@@ -47,7 +47,7 @@ function fmtD(s){
   <div class="sub" id="o_notice"></div>
   <div id="o_v1">
     <div id="o_start">
-      <div class="form-group"><label>Student ID *</label><input id="o_sid" placeholder="Apni Student ID likhein" autocapitalize="characters"></div>
+      <div class="form-group"><label>Student ID *</label><input id="o_sid" placeholder="Enter your Student ID (e.g. S2)" autocapitalize="characters"></div>
       <button class="form-submit" onclick="verifyStudent()">Verify Student ID →</button>
     </div>
     <div class="oerr" id="o_err1"></div>
@@ -89,14 +89,18 @@ async function openOly(e){
 }
 
 async function verifyStudent(){
-  const id = oq('o_sid').value.trim().toUpperCase().replace(/[^A-Z0-9_-]/g, '');
-  if (!id) { oq('o_err1').textContent = 'Student ID likhein.'; return; }
-  oq('o_err1').textContent = 'Verify ho raha hai...';
+  let id = oq('o_sid').value.trim().toUpperCase().replace(/[^A-Z0-9_-]/g, '');
+  if (!id) { oq('o_err1').textContent = 'Please enter your Student ID.'; return; }
+  const m = id.match(/^S(\d+)$/);
+  if (m) id = 'S' + parseInt(m[1], 10);
+  oq('o_err1').textContent = 'Checking...';
   try {
     const d = await oDB.doc('students/' + id).get();
-    if (!d.exists) { oq('o_err1').textContent = '❌ Yeh Student ID nahi mili. Sahi ID daalein ya call karein: 7481040468'; return; }
-    oStu = {id, ...d.data()}; oq('o_err1').textContent = ''; showForm();
-  } catch (err) { oq('o_err1').textContent = 'Internet check karke dobara try karein.'; }
+    if (d.exists) oStu = {id, ...d.data(), free: false};
+    else if (m) oStu = {id, name: '', cls: '', free: true};
+    else { oq('o_err1').textContent = '❌ Student ID not found. Enter your ID like S2 (S followed by a number) or call: 7481040468'; return; }
+    oq('o_err1').textContent = ''; showForm();
+  } catch (err) { oq('o_err1').textContent = 'Please check your internet and try again.'; }
 }
 
 function showForm(){
@@ -104,8 +108,11 @@ function showForm(){
   const sel = (id, a, ph) => `<select id="${id}"><option value="">${ph}</option>${oopts(a)}</select>`;
   oq('o_form').innerHTML =
     fg('1. Student ID', `<input value="${oesc(oStu.id)}" readonly>`) +
-    fg('2. Student Name', `<input value="${oesc(oStu.name)}" readonly>`) +
-    fg('3. Class', `<input value="${oesc(oStu.cls)}" readonly>`) +
+    (oStu.free
+      ? fg('2. Student Name *', '<input id="o_name" placeholder="Enter full name">') +
+        fg('3. Class *', `<select id="o_cls"><option value="">Select Class</option>${oopts(['Class 1','Class 2','Class 3','Class 4','Class 5','Class 6','Class 7','Class 8','Class 9','Class 10'])}</select>`)
+      : fg('2. Student Name', `<input value="${oesc(oStu.name)}" readonly>`) +
+        fg('3. Class', `<input value="${oesc(oStu.cls)}" readonly>`)) +
     fg('Select Olympiad *', `<select id="o_ev" onchange="evChange()"><option value="">Select Olympiad</option>${oEvs.map(e => `<option value="${oesc(e.id)}">${oesc(e.name)}</option>`).join('')}</select><div class="ofee" id="o_feetxt"></div>`) +
     fg('4. Medium *', sel('o_med', ['Hindi', 'English'], 'Select Medium')) +
     fg('5. Favourite Cartoon Character *', '<input id="o_cart" placeholder="Jaise: Chhota Bheem">') +
@@ -129,10 +136,10 @@ function evChange(){
 async function submitReg(){
   const g = id => oq(id).value.trim();
   const e = oEvs.find(x => x.id === g('o_ev'));
-  const d = {studentId: oStu.id, name: oStu.name, cls: oStu.cls, medium: g('o_med'), cartoon: g('o_cart'), mobile: g('o_mob'),
+  const d = {studentId: oStu.id, name: oStu.free ? g('o_name') : oStu.name, cls: oStu.free ? g('o_cls') : oStu.cls, medium: g('o_med'), cartoon: g('o_cart'), mobile: g('o_mob'),
     guardian: g('o_guard'), eventId: e ? e.id : '', eventName: e ? e.name : '', date: g('o_date'), shift: g('o_shift'),
     feeMode: g('o_fmode'), fee: e ? Number(e.fee) || 0 : 0, subject: g('o_sub'), puzzle: g('o_puz'), writing: g('o_wri')};
-  if (!d.eventId || !d.medium || !d.cartoon || !d.mobile || !d.guardian || !d.date || !d.shift || !d.feeMode || !d.subject || !d.puzzle || !d.writing) {
+  if (!d.name || !d.cls || !d.eventId || !d.medium || !d.cartoon || !d.mobile || !d.guardian || !d.date || !d.shift || !d.feeMode || !d.subject || !d.puzzle || !d.writing) {
     oq('o_err2').textContent = '⚠️ Sabhi * wali fields bharein.'; return; }
   if (!/^[0-9]{10}$/.test(d.mobile)) { oq('o_err2').textContent = '⚠️ 10 digit ka sahi mobile number daalein.'; return; }
   const btn = oq('o_submit'); btn.disabled = true; btn.textContent = 'Submitting...'; oq('o_err2').textContent = '';
