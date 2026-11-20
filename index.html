@@ -2711,6 +2711,8 @@ const counterObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 document.querySelectorAll('#achievements, #hero-actions').forEach(el => counterObs.observe(el));
 </script>
-
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="olympiad.js"></script>
 </body>
 </html>
